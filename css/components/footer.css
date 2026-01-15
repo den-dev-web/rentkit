@@ -1,0 +1,208 @@
+/* =============================
+   FOOTER
+   ============================= */
+
+.footer {
+  background: var(--color-white);
+  margin-top: clamp(30px, 6vw, 60px);
+  border-top: 1px solid var(--color-border-soft);
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 700ms cubic-bezier(0.21, 0.61, 0.35, 1),
+    opacity 600ms ease;
+  will-change: transform, opacity;
+}
+
+@media (min-width: 800px) {
+  .footer__inner {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.footer[data-visible="true"] {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .footer {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}
+
+.footer__inner {
+  display: grid;
+  gap: clamp(32px, 6vw, 48px);
+  padding-block: clamp(32px, 6vw, 64px);
+}
+
+/* BRAND */
+.footer__brand {
+  max-width: 360px;
+}
+
+.footer__logo-image {
+  height: 42px;
+  width: auto;
+  margin-bottom: 12px;
+}
+
+.footer__description {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+}
+
+/* NAVIGATION */
+.footer__nav-title {
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  color: var(--color-text-main);
+}
+
+.footer__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.footer__menu-link {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer__menu-link:hover,
+.footer__menu-link:focus-visible {
+  color: var(--color-primary);
+  transform: translateX(3px);
+  outline: none;
+}
+
+/* CONTACTS */
+.footer__contact-list {
+  list-style: none;
+  margin: 0 0 16px 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.footer__contact {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-fast);
+}
+
+.footer__contact:hover,
+.footer__contact:focus-visible {
+  color: var(--color-primary);
+  outline: none;
+}
+
+/* SOCIAL */
+.footer__social {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.footer__social-link {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--color-primary-soft);
+  transition: transform var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.footer__social-link:hover,
+.footer__social-link:focus-visible {
+  transform: translateY(-3px);
+  background-color: var(--color-primary);
+  outline: none;
+}
+
+/* BOTTOM STRIP */
+.footer__bottom {
+  background: rgba(240, 245, 255, 0.65);
+  border-top: 1px solid var(--color-border-soft);
+  padding-block: 12px;
+}
+
+.footer__bottom-inner {
+  text-align: center;
+}
+
+.footer__copy {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* =============================
+   STICKY MOBILE CTA
+   ============================= */
+
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--color-border-soft);
+
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: transform 400ms cubic-bezier(0.21, 0.61, 0.35, 1),
+    opacity 300ms ease;
+}
+
+.sticky-cta[data-visible="true"] {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sticky-cta__btn {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 999px;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.sticky-cta__btn:hover,
+.sticky-cta__btn:focus-visible {
+  background: var(--color-primary-strong);
+  outline: none;
+}
+
+/* Desktop отключаем */
+@media (min-width: 760px) {
+  .sticky-cta {
+    display: none;
+  }
+}

@@ -1,0 +1,73 @@
+/* ===========================
+   SCROLL REVEAL CORE
+   =========================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 650ms var(--transition-normal),
+    transform 650ms var(--transition-normal);
+  will-change: opacity, transform;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Стандартный stagger внутри секции */
+.reveal__item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal--visible .reveal__item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Motion-safe */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal__item {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cascade {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cascade__word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.cascade--visible .cascade__word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* motion-safe */
+@media (prefers-reduced-motion: reduce) {
+  .cascade__word {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .cascade {
+    display: block;
+    width: 100%;
+    white-space: normal;
+  }
+}

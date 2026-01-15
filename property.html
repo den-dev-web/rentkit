@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>RentKit — аренда квартир, домов и апартаментов</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="assets/icons/rentkit-favicon.png"
+    />
+    <meta
+      name="description"
+      content="RentKit — аренда квартир, домов и апартаментов"
+    />
+
+    <!-- SETTINGS -->
+    <link rel="stylesheet" href="css/tokens.css" />
+
+    <!-- BASE -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/typography.css" />
+
+    <!-- LAYOUT -->
+    <link rel="stylesheet" href="css/layout.css" />
+
+    <!-- COMPONENTS -->
+    <link rel="stylesheet" href="css/components/header.css" />
+    <link rel="stylesheet" href="css/components/footer.css" />
+    <link rel="stylesheet" href="css/components/scrollToTop.css" />
+    <link rel="stylesheet" href="css/components/property.css" />
+
+    <!-- UTILITIES + ANIMATIONS -->
+    <link rel="stylesheet" href="css/utils.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+  </head>
+  <body>
+    <header class="header" data-header>
+      <div class="container header__inner">
+        <!-- ЛОГОТИП -->
+        <a href="index.html" class="header__logo">
+          <img
+            class="header__logo-image"
+            src="assets/icons/rentkit-logo.png"
+            alt="RentKit"
+          />
+        </a>
+
+        <!-- ДЕСКТОП-НАВИГАЦИЯ -->
+        <nav class="header__nav" aria-label="Основная навигация">
+          <ul class="header__menu">
+            <li>
+              <a class="header__link" href="index.html#catalog">Каталог</a>
+            </li>
+            <li>
+              <a class="header__link" href="index.html#benefits">Почему мы</a>
+            </li>
+            <li><a class="header__link" href="index.html#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- CTA -->
+        <a class="header__cta" href="index.html#catalog">Подобрать жильё</a>
+
+        <!-- БУРГЕР -->
+        <button
+          class="header__burger"
+          aria-label="Меню"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-burger
+        >
+          <span class="header__burger-line header__burger-line--top"></span>
+          <span class="header__burger-line header__burger-line--middle"></span>
+          <span class="header__burger-line header__burger-line--bottom"></span>
+        </button>
+      </div>
+    </header>
+    <!-- МОБИЛЬНОЕ МЕНЮ-->
+    <nav
+      class="mobile-menu"
+      id="mobile-menu"
+      aria-label="Мобильная навигация"
+      aria-hidden="true"
+      data-mobile-menu
+    >
+      <div class="mobile-menu__backdrop" data-mobile-backdrop></div>
+      <div class="mobile-menu__panel" data-mobile-panel>
+        <div class="mobile-menu__header">
+          <span class="mobile-menu__title">Меню</span>
+          <button
+            class="mobile-menu__close"
+            type="button"
+            aria-label="Закрыть меню"
+            data-mobile-close
+          >
+            ✕
+          </button>
+        </div>
+        <ul class="mobile-menu__list">
+          <li>
+            <a class="mobile-menu__link" href="index.html#catalog">Каталог</a>
+          </li>
+          <li>
+            <a class="mobile-menu__link" href="index.html#benefits"
+              >Почему мы</a
+            >
+          </li>
+          <li><a class="mobile-menu__link" href="index.html#faq">FAQ</a></li>
+        </ul>
+
+        <a class="mobile-menu__cta" href="index.html#catalog"
+          >Подобрать жильё</a
+        >
+      </div>
+    </nav>
+
+    <main class="property" data-property-id="">
+      <!-- ===========================
+       HERO-ГАЛЕРЕЯ (ПРЕМИУМ)
+       =========================== -->
+      <section class="property-hero" data-gallery>
+        <div class="property-hero__gallery">
+          <div class="property-hero__images" data-gallery-images></div>
+
+          <!-- CTA-переключатели -->
+          <button class="gallery-btn gallery-btn--prev" data-gallery-prev>
+            ‹
+          </button>
+          <button class="gallery-btn gallery-btn--next" data-gallery-next>
+            ›
+          </button>
+
+          <!-- миниатюры -->
+          <div class="property-hero__thumbs" data-gallery-thumbs></div>
+        </div>
+      </section>
+
+      <section class="property-mini-map">
+        <div class="property-mini-map__inner">
+          <iframe
+            class="property-mini-map__frame"
+            data-property-map
+            src=""
+            loading="lazy"
+            title="Карта расположения объекта"
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- ===========================
+       СТРУКТУРА СТРАНИЦЫ
+       =========================== -->
+      <div class="container property__layout">
+        <div class="property__content">
+          <!-- Заголовок + метаданные -->
+          <section class="property-section">
+            <h1 class="property-title" data-property-title>
+              Современная студия с панорамными окнами
+            </h1>
+
+            <p class="property-meta" data-property-meta>
+              Киев, Печерск — ул. Предславинская, 32
+            </p>
+            <div class="property-badges" data-property-badges></div>
+          </section>
+
+          <!-- Характеристики -->
+          <section class="property-section">
+            <h2 class="section-title">Характеристики</h2>
+
+            <ul class="property-specs" data-property-specs></ul>
+          </section>
+
+          <!-- Описание -->
+          <section class="property-section">
+            <h2 class="section-title">Описание</h2>
+            <p class="property-description" data-property-description>
+              Современная студия с панорамными окнами и дизайнерским ремонтом.
+              Апартаменты находятся в новом жилом комплексе с охраняемой
+              территорией. Квартира полностью укомплектована техникой и мебелью.
+            </p>
+          </section>
+
+          <!-- Преимущества -->
+          <section class="property-section">
+            <h2 class="section-title">Преимущества</h2>
+
+            <ul class="property-features" data-property-features></ul>
+          </section>
+
+          <!-- Галерея блока -->
+          <section class="property-section">
+            <h2 class="section-title">Дополнительные фото</h2>
+
+            <div class="property-grid-gallery" data-property-gallery></div>
+          </section>
+
+          <!-- Хост -->
+          <section class="property-section property-host">
+            <img
+              src="assets/images/objects/rk-000002_host.jpg"
+              class="property-host__avatar"
+              data-property-host-avatar
+            />
+            <div>
+              <h3 data-property-host-name>Александра, хозяйка</h3>
+              <p data-property-host-meta>8 лет опыта, рейтинг 4.9, 52 отзыва</p>
+            </div>
+          </section>
+        </div>
+
+        <!-- ===========================
+         STICKY SIDEBAR (цена, CTA)
+         =========================== -->
+        <aside class="property-sidebar" data-sticky-sidebar>
+          <div class="property-sidebar__card">
+            <p class="sidebar-price" data-property-price>38 000 ₴ / месяц</p>
+
+            <p
+              class="sidebar-status sidebar-status--available"
+              data-property-status
+            >
+              Доступно сейчас
+            </p>
+
+            <a class="sidebar-btn" href="#contact-owner">
+              Связаться с хозяином
+            </a>
+
+            <div class="sidebar-meta" data-property-sidebar-notes></div>
+
+            <section class="property-section property-calendar">
+              <div class="calendar calendar--mini" id="calendar-mini"></div>
+              <div class="calendar-legend">
+                <span class="calendar-legend__item calendar-legend__item--free">
+                  Свободно
+                </span>
+                <span class="calendar-legend__item calendar-legend__item--busy">
+                  Занято
+                </span>
+              </div>
+              <button class="calendar-open" data-calendar-open>
+                Смотреть 3 месяца
+              </button>
+            </section>
+          </div>
+        </aside>
+      </div>
+
+      <section class="property-section property-reviews" id="reviews">
+        <h2 class="section-title">Отзывы гостей</h2>
+
+        <div class="reviews-summary">
+          <div class="reviews-summary__rating" data-reviews-rating>4.9</div>
+          <div>
+            <div class="reviews-summary__stars" data-reviews-stars>★★★★★</div>
+            <p class="reviews-summary__count" data-reviews-count>52 отзыва</p>
+          </div>
+        </div>
+
+        <div class="reviews-list" data-reviews-list></div>
+
+        <button class="reviews-more" data-reviews-more>Показать ещё</button>
+      </section>
+    </main>
+
+    <footer class="footer" aria-labelledby="footer-title">
+      <div class="container footer__inner">
+        <!-- BRAND -->
+        <div class="footer__brand">
+          <h2 id="footer-title" class="u-visually-hidden">
+            Информация о RentKit
+          </h2>
+
+          <a href="index.html" class="footer__logo">
+            <img
+              class="footer__logo-image"
+              src="assets/icons/rentkit-logo.png"
+              alt="RentKit"
+            />
+          </a>
+
+          <p class="footer__description">
+            Аренда квартир, домов и апартаментов с честными фотографиями и
+            реальными видами из окон.
+          </p>
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="footer__nav" aria-label="Навигация по сайту">
+          <h3 class="footer__nav-title">Разделы</h3>
+          <ul class="footer__menu">
+            <li>
+              <a class="footer__menu-link" href="index.html#catalog">Каталог</a>
+            </li>
+            <li>
+              <a class="footer__menu-link" href="index.html#benefits">
+                Почему мы
+              </a>
+            </li>
+            <li><a class="footer__menu-link" href="index.html#faq">FAQ</a></li>
+            <li>
+              <a class="footer__menu-link" href="index.html#hero">Поиск</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- CONTACTS -->
+        <div class="footer__contacts">
+          <h3 class="footer__nav-title">Контакты</h3>
+
+          <ul class="footer__contact-list">
+            <li>
+              <a href="mailto:info@rentkit.example" class="footer__contact">
+                info@rentkit.example
+              </a>
+            </li>
+            <li>
+              <a href="tel:+380001112233" class="footer__contact">
+                +38 (000) 111-22-33
+              </a>
+            </li>
+          </ul>
+
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram" class="footer__social-link">
+              <img
+                src="assets/icons/rentkit-instagram.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </a>
+            <a href="#" aria-label="Facebook" class="footer__social-link">
+              <img
+                src="assets/icons/rentkit-facebook.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </a>
+            <a href="#" aria-label="Twitter" class="footer__social-link">
+              <img
+                src="assets/icons/rentkit-twitter.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="footer__copy">© 2025 RentKit. Все права защищены.</p>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-to-top" data-back-to-top aria-label="Вернуться наверх">
+      ↑
+    </button>
+
+    <div
+      class="calendar-modal"
+      data-calendar-modal
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="calendar-title"
+    >
+      <div class="calendar-modal__overlay" data-calendar-close></div>
+      <div class="calendar-modal__content" role="document">
+        <button
+          class="calendar-modal__close"
+          data-calendar-close
+          aria-label="Закрыть"
+        >
+          ×
+        </button>
+        <h3 id="calendar-title" class="calendar-modal__title">
+          Календарь доступности
+        </h3>
+        <p class="calendar-modal__subtitle">Текущий и 2 следующих месяца</p>
+        <div class="calendar-grid" data-calendar-grid></div>
+      </div>
+    </div>
+
+    <script type="module" src="js/property.js"></script>
+  </body>
+</html>

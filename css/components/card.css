@@ -1,0 +1,366 @@
+.catalog {
+  padding-block: clamp(30px, 6vw, 60px);
+}
+
+.catalog__sentinel {
+  width: 100%;
+  height: 1px;
+}
+
+.catalog__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-xl);
+}
+
+.catalog__load-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-strong)
+  );
+  color: var(--color-white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.2);
+  transition: transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.catalog__load-more:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 38px rgba(37, 99, 235, 0.28);
+}
+
+.catalog__load-more:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.catalog__load-more:active {
+  transform: translateY(0);
+}
+
+.catalog__actions[hidden],
+.catalog__load-more[hidden] {
+  display: none;
+}
+
+.property-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08),
+    0 12px 32px rgba(15, 23, 42, 0.08);
+
+  transition: transform 0.35s cubic-bezier(0.21, 0.61, 0.35, 1),
+    box-shadow 0.4s ease;
+
+  will-change: transform;
+}
+
+.property-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.property-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.8s ease, transform 1.2s ease;
+}
+
+.property-card__image[data-loaded="true"] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.property-card__badges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.property-card__status-badge {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+}
+
+.badge {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25),
+    inset 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.badge--premium {
+  background: var(--color-badge-premium-soft);
+}
+
+.badge--status-available {
+  background: var(--color-badge-status-available);
+}
+
+.badge--status-busy {
+  background: var(--color-badge-status-busy);
+}
+
+.badge--new {
+  background: var(--color-badge-new-soft);
+}
+
+.property-card__body {
+  padding: 20px 22px 24px;
+  display: grid;
+  gap: 12px;
+}
+
+.property-card__title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-strong);
+  line-height: 1.3;
+}
+
+.property-card__location {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.property-card__info {
+  display: flex;
+  gap: 16px;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.property-card__meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.property-card__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: var(--font-size-sm);
+}
+
+.property-card__price-row {
+  margin-top: var(--space-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.property-card__price {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.property-card__status {
+  font-size: var(--font-size-xs);
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.property-card__status--available {
+  background-color: rgba(34, 197, 94, 0.08);
+  color: var(--color-success-strong);
+}
+
+.property-card__status--busy {
+  background-color: rgba(148, 163, 184, 0.3);
+  color: var(--color-text-subtle);
+}
+
+.property-card__button {
+  margin-top: var(--space-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.property-card__button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.property-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14),
+    0 20px 48px rgba(15, 23, 42, 0.22);
+}
+
+.property-card:hover .property-card__button {
+  transform: translateY(-1px);
+}
+
+.property-card__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.property-card__price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-strong);
+}
+
+.property-card__status--available {
+  color: var(--color-success);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.property-card__cta {
+  padding: 8px 16px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.85rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.property-card__cta:hover {
+  background: var(--color-primary-strong);
+}
+
+/* Сетка каталога */
+.property-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 600px) {
+  .property-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .property-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.lazy-img {
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+
+.lazy-img[data-loaded="true"] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Состояние до появления */
+.property-card[data-reveal-item] {
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+
+/* Когда карточка видима */
+.property-card.property-card--visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ============================================
+   PREMIUM HOVER 3D LIFT
+   ============================================ */
+
+.property-card {
+  perspective: 1200px; /* создаёт глубину 3D */
+  transform-style: preserve-3d;
+  transition: transform 300ms cubic-bezier(0.21, 0.61, 0.35, 1),
+    box-shadow 300ms ease;
+}
+
+/* Слой контента — должен быть трансформируем */
+.property-card__body,
+.property-card__media {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Исходное состояние */
+.property-card:not([data-hover]) {
+  transform: translateY(0) rotateX(0) rotateY(0);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
+}
+
+/* Активное состояние 3D Lift */
+.property-card[data-hover="true"] {
+  transform: translateY(-8px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  box-shadow: 0 24px 40px rgba(15, 23, 42, 0.18);
+}
+
+/* Лёгкий параллакс картинки внутри */
+.property-card[data-hover="true"] .property-card__media-image {
+  transform: scale(1.04) translateX(var(--px, 0)) translateY(var(--py, 0));
+  transition: transform 300ms cubic-bezier(0.21, 0.61, 0.35, 1);
+  will-change: transform;
+}
+
+/* Motion-safe */
+@media (prefers-reduced-motion: reduce) {
+  .property-card[data-hover="true"],
+  .property-card[data-hover="true"] .property-card__media-image {
+    transform: none;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  }
+}
