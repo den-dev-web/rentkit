@@ -114,7 +114,10 @@ export default function initCatalog() {
       layer.appendChild(popover);
     }
 
-    popover.classList.add("filter-popover--floating", "filter-popover--visible");
+    popover.classList.add(
+      "filter-popover--floating",
+      "filter-popover--visible",
+    );
     positionFloatingPopover(filter, popover, layer);
 
     const scrollContainer = modalEl?.querySelector(".filters-modal__scroll");
@@ -137,14 +140,20 @@ export default function initCatalog() {
     const popover = getFilterPopover(filter);
     if (!popover) return;
 
-    popover.classList.remove("filter-popover--floating", "filter-popover--visible");
+    popover.classList.remove(
+      "filter-popover--floating",
+      "filter-popover--visible",
+    );
     popover.style.left = "";
     popover.style.top = "";
     popover.style.minWidth = "";
 
     const origin = popoverOrigins.get(popover);
     if (origin?.parent) {
-      if (origin.nextSibling && origin.nextSibling.parentNode === origin.parent) {
+      if (
+        origin.nextSibling &&
+        origin.nextSibling.parentNode === origin.parent
+      ) {
         origin.parent.insertBefore(popover, origin.nextSibling);
       } else {
         origin.parent.appendChild(popover);
@@ -186,7 +195,7 @@ export default function initCatalog() {
     const popover = getFilterPopover(filter);
     const scope = popover || filter;
     return [...scope.querySelectorAll(".filter-list__item")].find(
-      (item) => (item.dataset.value ?? "").toLowerCase() === target
+      (item) => (item.dataset.value ?? "").toLowerCase() === target,
     );
   };
 
@@ -204,7 +213,7 @@ export default function initCatalog() {
 
   const getMatchedFilterValue = (filter, value) => {
     const option = findFilterOption(filter, value);
-    return option ? option.dataset.value ?? "" : String(value);
+    return option ? (option.dataset.value ?? "") : String(value);
   };
 
   const syncFormWithApplied = (filters) => {
@@ -221,8 +230,12 @@ export default function initCatalog() {
     const priceFilter = filtersForm.querySelector("[data-filter='price']");
     const minInput = priceFilter?.querySelector('input[name="priceMin"]');
     const maxInput = priceFilter?.querySelector('input[name="priceMax"]');
-    if (minInput) minInput.value = filters.priceMin === null ? "" : String(filters.priceMin);
-    if (maxInput) maxInput.value = filters.priceMax === null ? "" : String(filters.priceMax);
+    if (minInput)
+      minInput.value =
+        filters.priceMin === null ? "" : String(filters.priceMin);
+    if (maxInput)
+      maxInput.value =
+        filters.priceMax === null ? "" : String(filters.priceMax);
 
     let priceToken = "";
     if (filters.priceMin === null && filters.priceMax === null) {
@@ -266,21 +279,26 @@ export default function initCatalog() {
     });
     if (valueEl) {
       const activeChips = [...chips].filter((c) =>
-        c.classList.contains("chip--active")
+        c.classList.contains("chip--active"),
       );
       valueEl.textContent = activeChips.length
         ? activeChips.map((c) => c.textContent).join(" · ")
         : "Любой";
     }
 
-    const availableFilter = filtersForm.querySelector("[data-filter='available']");
+    const availableFilter = filtersForm.querySelector(
+      "[data-filter='available']",
+    );
     const availableInput = availableFilter?.querySelector(
-      "input[name='onlyAvailable']"
+      "input[name='onlyAvailable']",
     );
     const availableBtn = availableFilter?.querySelector("[data-toggle-pill]");
     if (availableInput) availableInput.checked = filters.onlyAvailable;
     if (availableBtn) {
-      availableBtn.classList.toggle("filter-pill--active", filters.onlyAvailable);
+      availableBtn.classList.toggle(
+        "filter-pill--active",
+        filters.onlyAvailable,
+      );
     }
 
     document.querySelectorAll(".filter.filter--open").forEach((el) => {
@@ -335,7 +353,10 @@ export default function initCatalog() {
     if (loadMoreWrap) loadMoreWrap.hidden = true;
   };
 
-  const renderCatalog = (properties, { append = false, startIndex = 0 } = {}) => {
+  const renderCatalog = (
+    properties,
+    { append = false, startIndex = 0 } = {},
+  ) => {
     if (!append) {
       catalogGrid.innerHTML = "";
     }
@@ -476,11 +497,11 @@ export default function initCatalog() {
       filtered.sort((a, b) => b.price - a.price);
     } else if (sort === "date-desc") {
       filtered.sort(
-        (a, b) => new Date(b.addedAt).getTime() - new Date(a.addedAt).getTime()
+        (a, b) => new Date(b.addedAt).getTime() - new Date(a.addedAt).getTime(),
       );
     } else if (sort === "date-asc") {
       filtered.sort(
-        (a, b) => new Date(a.addedAt).getTime() - new Date(b.addedAt).getTime()
+        (a, b) => new Date(a.addedAt).getTime() - new Date(b.addedAt).getTime(),
       );
     }
 
@@ -511,7 +532,9 @@ export default function initCatalog() {
     });
 
     document
-      .querySelectorAll(".property-card[data-reveal-item]:not(.property-card--visible)")
+      .querySelectorAll(
+        ".property-card[data-reveal-item]:not(.property-card--visible)",
+      )
       .forEach((card, index) => {
         if (card.closest("[data-reveal]")) return;
         card.style.transitionDelay = `${index * 80}ms`;
@@ -532,7 +555,7 @@ export default function initCatalog() {
           let shown = 0;
           document
             .querySelectorAll(
-              ".property-card[data-reveal-item]:not(.property-card--visible)"
+              ".property-card[data-reveal-item]:not(.property-card--visible)",
             )
             .forEach((card) => {
               const rect = card.getBoundingClientRect();
@@ -593,7 +616,7 @@ export default function initCatalog() {
         if (input) input.checked = active;
 
         const activeChips = [...chips].filter((c) =>
-          c.classList.contains("chip--active")
+          c.classList.contains("chip--active"),
         );
         valueEl.textContent = activeChips.length
           ? activeChips.map((c) => c.textContent).join(" · ")
@@ -622,7 +645,7 @@ export default function initCatalog() {
 
       filtersForm
         .querySelectorAll(
-          'input[name="city"], input[name="priceMin"], input[name="priceMax"], input[name="rooms"], input[name="sort"], input[name="sorting"]'
+          'input[name="city"], input[name="priceMin"], input[name="priceMax"], input[name="rooms"], input[name="sort"], input[name="sorting"]',
         )
         .forEach((input) => {
           if (input.type === "checkbox" || input.type === "radio") {
@@ -690,7 +713,8 @@ export default function initCatalog() {
     item.addEventListener("click", () => {
       const popover = item.closest(".filter-popover");
       const filter =
-        item.closest("[data-filter]") || (popover ? popoverOwners.get(popover) : null);
+        item.closest("[data-filter]") ||
+        (popover ? popoverOwners.get(popover) : null);
       if (!filter) return;
 
       const value = item.dataset.value ?? "";
