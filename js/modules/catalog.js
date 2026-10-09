@@ -4,6 +4,9 @@ import { scrollBehavior } from "../utils/motion.js";
 import { t, tPlural, formatNumber, localizeData } from "./i18n.js";
 
 const RENTKIT_PROPERTIES = localizeData(RAW_PROPERTIES);
+// Все превью каталога — 800×600 (4:3, как .property-card__media)
+const CARD_IMAGE_WIDTH = 800;
+const CARD_IMAGE_HEIGHT = 600;
 
 export default function initCatalog() {
   const skeletonGrid = document.querySelector("[data-skeleton-grid]");
@@ -416,6 +419,8 @@ export default function initCatalog() {
               class="property-card__image property-card__media-image lazy-img"
               src="${jpgSrc}"
               alt="${item.title}"
+              width="${CARD_IMAGE_WIDTH}"
+              height="${CARD_IMAGE_HEIGHT}"
               loading="lazy"
               decoding="async">
           </picture>
