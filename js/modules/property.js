@@ -459,6 +459,26 @@ function trapFocus(container, event) {
   }
 }
 
+// Даты брони хранятся относительно сегодняшнего дня, чтобы демо не устаревало
+function getBookedDates(ranges = [], today) {
+  const dates = new Set();
+  ranges.forEach(([startOffset, nights]) => {
+    for (let night = 0; night < nights; night++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + startOffset + night);
+      dates.add(toLocalIsoDate(date));
+    }
+  });
+  return dates;
+}
+
+function toLocalIsoDate(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
 function initCalendar(propertyData) {
   const mini = document.getElementById("calendar-mini");
   const modal = document.querySelector("[data-calendar-modal]");
@@ -469,9 +489,9 @@ function initCalendar(propertyData) {
   if (!mini || !modal || !openBtn || !grid) return;
   let lastFocusedElement = null;
 
-  const bookedDates = new Set(
-    (propertyData.bookedDates || []).map((date) => date)
-  );
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const bookedDates = getBookedDates(propertyData.bookedRanges, today);
 
   const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
   const monthFormatter = new Intl.DateTimeFormat(locale, { month: "long" });
@@ -480,16 +500,6 @@ function initCalendar(propertyData) {
   const weekdays = Array.from({ length: 7 }, (_, i) =>
     capitalize(weekdayFormatter.format(new Date(2024, 0, 1 + i)))
   );
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  function toIsoDate(date) {
-    const y = date.getFullYear();
-    const m = String(date.getMonth() + 1).padStart(2, "0");
-    const d = String(date.getDate()).padStart(2, "0");
-    return `${y}-${m}-${d}`;
-  }
-
   function renderMonth(target, year, month, isMini) {
     const wrapper = document.createElement("div");
     wrapper.className = `calendar-month${
@@ -542,7 +552,7 @@ function initCalendar(propertyData) {
     for (let day = 1; day <= totalDays; day++) {
       const cell = document.createElement("div");
       const currentDate = new Date(year, month, day);
-      const isoDate = toIsoDate(currentDate);
+      const isoDate = toLocalIsoDate(currentDate);
       const isPast = currentDate < today;
       const isBusy = bookedDates.has(isoDate);
 
@@ -557,7 +567,7 @@ function initCalendar(propertyData) {
         cell.classList.add("calendar__day--free");
       }
 
-      if (isoDate === toIsoDate(today)) {
+      if (isoDate === toLocalIsoDate(today)) {
         cell.classList.add("calendar__day--today");
       }
 

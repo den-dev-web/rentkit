@@ -125,6 +125,8 @@ const DEFAULT_PROPERTY_DETAILS = {
   sidebarNotes: DEFAULT_SIDEBAR_NOTES,
 };
 
+// bookedRanges: [через сколько дней от сегодня, сколько ночей] —
+// календарь всегда показывает актуальную занятость
 const RENTKIT_PROPERTIES = [
   {
     ...DEFAULT_PROPERTY_DETAILS,
@@ -254,7 +256,7 @@ const RENTKIT_PROPERTIES = [
     isNew: true,
     isPremium: false,
     addedAt: "2025-01-12",
-    bookedDates: ["2025-10-02", "2025-10-11", "2025-10-19"],
+    bookedRanges: [[2, 4], [11, 4], [19, 3]],
     images: {
       avif: "./assets/images/catalog_images/rk-000001_01.avif",
       webp: "./assets/images/catalog_images/rk-000001_01.webp",
@@ -402,14 +404,7 @@ const RENTKIT_PROPERTIES = [
     isNew: false,
     isPremium: false,
     addedAt: "2024-11-08",
-    bookedDates: [
-      "2025-10-05",
-      "2025-10-06",
-      "2025-10-21",
-      "2025-11-02",
-      "2025-11-14",
-      "2025-12-01",
-    ],
+    bookedRanges: [[5, 4], [6, 2], [21, 2], [33, 2], [45, 2], [62, 4]],
     images: {
       avif: "./assets/images/catalog_images/rk-000002_01.avif",
       webp: "./assets/images/catalog_images/rk-000002_01.webp",
@@ -534,7 +529,7 @@ const RENTKIT_PROPERTIES = [
     isNew: false,
     isPremium: true,
     addedAt: "2024-03-22",
-    bookedDates: ["2025-10-09", "2025-10-10", "2025-11-06"],
+    bookedRanges: [[9, 2], [10, 3], [37, 3]],
     images: {
       avif: "./assets/images/catalog_images/rk-000003_01.avif",
       webp: "./assets/images/catalog_images/rk-000003_01.webp",
@@ -667,7 +662,7 @@ const RENTKIT_PROPERTIES = [
     isNew: false,
     isPremium: false,
     addedAt: "2023-08-19",
-    bookedDates: ["2025-10-14", "2025-10-22", "2025-11-20"],
+    bookedRanges: [[14, 4], [22, 3], [51, 2]],
     images: {
       avif: "./assets/images/catalog_images/rk-000004_01.avif",
       webp: "./assets/images/catalog_images/rk-000004_01.webp",
@@ -797,7 +792,7 @@ const RENTKIT_PROPERTIES = [
     isNew: true,
     isPremium: false,
     addedAt: "2025-06-02",
-    bookedDates: ["2025-10-04", "2025-10-25", "2025-11-08"],
+    bookedRanges: [[4, 3], [25, 3], [39, 2]],
     images: {
       avif: "./assets/images/catalog_images/rk-000005_01.avif",
       webp: "./assets/images/catalog_images/rk-000005_01.webp",
@@ -928,7 +923,7 @@ const RENTKIT_PROPERTIES = [
     isNew: false,
     isPremium: false,
     addedAt: "2024-02-27",
-    bookedDates: ["2025-10-07", "2025-11-10", "2025-12-05"],
+    bookedRanges: [[7, 3], [41, 4], [66, 2]],
     images: {
       avif: "./assets/images/catalog_images/rk-000006_01.avif",
       webp: "./assets/images/catalog_images/rk-000006_01.webp",
@@ -1063,7 +1058,7 @@ const RENTKIT_PROPERTIES = [
     isNew: true,
     isPremium: true,
     addedAt: "2025-09-18",
-    bookedDates: ["2025-10-22", "2025-11-12", "2025-12-18"],
+    bookedRanges: [[22, 3], [43, 3], [79, 3]],
     images: {
       avif: "./assets/images/catalog_images/rk-000007_01.avif",
       webp: "./assets/images/catalog_images/rk-000007_01.webp",
@@ -1204,7 +1199,7 @@ const RENTKIT_PROPERTIES = [
     isNew: false,
     isPremium: true,
     addedAt: "2024-06-11",
-    bookedDates: ["2025-10-28", "2025-11-01", "2025-12-11"],
+    bookedRanges: [[28, 3], [32, 4], [72, 2]],
     images: {
       avif: "./assets/images/catalog_images/rk-000008_01.avif",
       webp: "./assets/images/catalog_images/rk-000008_01.webp",
@@ -1333,7 +1328,7 @@ const RENTKIT_PROPERTIES = [
     isNew: false,
     isPremium: true,
     addedAt: "2024-05-25",
-    bookedDates: ["2025-10-19", "2025-11-04", "2025-12-22"],
+    bookedRanges: [[19, 3], [35, 4], [83, 4]],
     images: {
       avif: "./assets/images/catalog_images/rk-000009_01.avif",
       webp: "./assets/images/catalog_images/rk-000009_01.webp",
@@ -1462,7 +1457,7 @@ const RENTKIT_PROPERTIES = [
     isNew: false,
     isPremium: false,
     addedAt: "2024-03-10",
-    bookedDates: ["2025-10-16", "2025-11-22", "2025-12-09"],
+    bookedRanges: [[16, 3], [53, 4], [70, 3]],
     images: {
       avif: "./assets/images/catalog_images/rk-000010_01.avif",
       webp: "./assets/images/catalog_images/rk-000010_01.webp",
