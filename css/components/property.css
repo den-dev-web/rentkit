@@ -11,6 +11,10 @@
   text-align: center;
 }
 
+.property-not-found .property-not-found__link {
+  width: auto;
+}
+
 .property-not-found__text {
   color: var(--color-text-muted);
 }
@@ -294,6 +298,8 @@
 
 .sidebar-btn {
   display: block;
+  width: 100%;
+  border: none;
   text-align: center;
   margin-top: 22px;
 
@@ -603,7 +609,8 @@
   box-shadow: 0 10px 18px rgba(15, 23, 42, 0.18);
 }
 
-.calendar-modal {
+.calendar-modal,
+.contact-modal {
   position: fixed;
   inset: 0;
   display: grid;
@@ -614,19 +621,22 @@
   z-index: 50;
 }
 
-.calendar-modal--open {
+.calendar-modal--open,
+.contact-modal--open {
   opacity: 1;
   pointer-events: auto;
 }
 
-.calendar-modal__overlay {
+.calendar-modal__overlay,
+.contact-modal__overlay {
   position: absolute;
   inset: 0;
   background: rgba(15, 23, 42, 0.55);
   backdrop-filter: blur(4px);
 }
 
-.calendar-modal__content {
+.calendar-modal__content,
+.contact-modal__content {
   position: relative;
   width: min(900px, 92vw);
   max-height: 88vh;
@@ -638,18 +648,21 @@
   z-index: 1;
 }
 
-.calendar-modal__title {
+.calendar-modal__title,
+.contact-modal__title {
   margin: 0 0 6px;
   font-size: 1.5rem;
   color: var(--color-text-strong);
 }
 
-.calendar-modal__subtitle {
+.calendar-modal__subtitle,
+.contact-modal__subtitle {
   margin: 0 0 20px;
   color: var(--color-text-muted);
 }
 
-.calendar-modal__close {
+.calendar-modal__close,
+.contact-modal__close {
   position: absolute;
   right: 18px;
   top: 18px;
@@ -683,6 +696,71 @@
   .calendar-modal__content {
     padding: 20px;
   }
+}
+
+.contact-modal__content {
+  width: min(480px, 92vw);
+}
+
+/* место под кнопку закрытия */
+.contact-modal__title {
+  padding-right: var(--space-2xl);
+}
+
+.contact-modal__success-title {
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-success);
+}
+
+.contact-form {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.contact-form__field {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.contact-form__label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-strong);
+}
+
+/* 16px+ — иначе iOS Safari зумит страницу при фокусе */
+.contact-form__input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: var(--font-size-md);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
+  color: var(--color-text-main);
+}
+
+.contact-form__input:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+}
+
+.contact-form__input[aria-invalid="true"] {
+  border-color: var(--color-danger-strong);
+}
+
+.contact-form__input--textarea {
+  resize: vertical;
+}
+
+.contact-form__error {
+  font-size: var(--font-size-sm);
+  color: var(--color-danger);
+}
+
+.contact-form__submit {
+  margin-top: var(--space-sm);
 }
 
 .sidebar-price {

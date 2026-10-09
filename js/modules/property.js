@@ -564,6 +564,85 @@ function initCalendar(propertyData) {
   });
 }
 
+const MIN_PHONE_DIGITS = 10;
+
+function initContactModal() {
+  const modal = document.querySelector("[data-contact-modal]");
+  const openBtn = document.querySelector("[data-contact-open]");
+  const form = modal?.querySelector("[data-contact-form]");
+  const success = modal?.querySelector("[data-contact-success]");
+  if (!modal || !openBtn || !form || !success) return;
+
+  const validators = {
+    name: (value) => value.trim().length > 0,
+    phone: (value) => value.replace(/\D/g, "").length >= MIN_PHONE_DIGITS,
+  };
+
+  function setFieldError(name, isInvalid) {
+    const input = form.elements[name];
+    const error = form.querySelector(`[data-error-for="${name}"]`);
+    input.setAttribute("aria-invalid", String(isInvalid));
+    if (error) error.hidden = !isInvalid;
+  }
+
+  function validate() {
+    let firstInvalid = null;
+    Object.entries(validators).forEach(([name, isValid]) => {
+      const invalid = !isValid(form.elements[name].value);
+      setFieldError(name, invalid);
+      if (invalid && !firstInvalid) firstInvalid = form.elements[name];
+    });
+    firstInvalid?.focus();
+    return !firstInvalid;
+  }
+
+  function openModal() {
+    form.reset();
+    Object.keys(validators).forEach((name) => setFieldError(name, false));
+    form.classList.remove("u-hidden");
+    success.hidden = true;
+
+    modal.classList.add("contact-modal--open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    form.elements.name.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove("contact-modal--open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener("click", openModal);
+  modal
+    .querySelectorAll("[data-contact-close]")
+    .forEach((btn) => btn.addEventListener("click", closeModal));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("contact-modal--open")) {
+      closeModal();
+    }
+  });
+
+  // Повторная проверка поля, как только пользователь исправляет ошибку
+  form.addEventListener("input", (event) => {
+    const { name, value } = event.target;
+    if (validators[name] && event.target.getAttribute("aria-invalid") === "true") {
+      setFieldError(name, !validators[name](value));
+    }
+  });
+
+  // Бэкенда нет — после валидации показываем подтверждение
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!validate()) return;
+    form.classList.add("u-hidden");
+    success.hidden = false;
+    success.querySelector("[data-contact-close]")?.focus();
+  });
+}
+
 function initSidebarPulse() {
   const price = document.querySelector(".sidebar-price");
   if (!price) return;
@@ -598,6 +677,7 @@ export default function initPropertyPage() {
   initSectionReveal();
   initReviewsToggle();
   initCalendar(propertyData);
+  initContactModal();
   initSidebarPulse();
   fixSidebarOnMobile();
 }
