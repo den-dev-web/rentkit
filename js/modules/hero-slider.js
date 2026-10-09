@@ -1,3 +1,5 @@
+import { prefersReducedMotion } from "../utils/motion.js";
+
 export default function initHeroSlider() {
   const slider = document.querySelector("[data-hero-slider]");
   if (!slider) return;
@@ -13,6 +15,9 @@ export default function initHeroSlider() {
 
   let index = 0;
   const DURATION = 5500;
+  // Без автосмены и параллакса, если пользователь просит меньше движения
+  const isStatic = prefersReducedMotion();
+  if (isStatic) progress.classList.add("u-hidden");
 
   // ---------------------------
   // Безопасное применение слайда
@@ -52,6 +57,7 @@ export default function initHeroSlider() {
     }
 
     // Прогресс-бар (полный сброс и запуск анимации)
+    if (isStatic) return;
     progress.style.animation = "none";
     void progress.offsetWidth; // перезапускаем CSS-анимацию
     progress.style.animation = `hero-progress ${DURATION}ms linear forwards`;
@@ -63,10 +69,12 @@ export default function initHeroSlider() {
   // ---------------------------
   // Параллакс
   // ---------------------------
-  window.addEventListener("scroll", () => {
-    const offset = window.scrollY * 0.08;
-    slider.style.setProperty("--parallax-offset", `${offset}px`);
-  });
+  if (!isStatic) {
+    window.addEventListener("scroll", () => {
+      const offset = window.scrollY * 0.08;
+      slider.style.setProperty("--parallax-offset", `${offset}px`);
+    });
+  }
 
   // ---------------------------
   // Автосмена слайдов
@@ -79,5 +87,5 @@ export default function initHeroSlider() {
   // запуск первого кадра
   applySlide(index);
 
-  setInterval(nextSlide, DURATION);
+  if (!isStatic) setInterval(nextSlide, DURATION);
 }

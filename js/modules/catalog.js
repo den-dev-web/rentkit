@@ -1,5 +1,6 @@
 import { RENTKIT_PROPERTIES as RAW_PROPERTIES } from "../data/properties.js";
 import { observeCard } from "./reveal.js";
+import { scrollBehavior } from "../utils/motion.js";
 import { t, tPlural, formatNumber, localizeData } from "./i18n.js";
 
 const RENTKIT_PROPERTIES = localizeData(RAW_PROPERTIES);
@@ -912,7 +913,7 @@ export default function initCatalog() {
       window.pageYOffset -
       headerOffset -
       12;
-    window.scrollTo({ top, behavior: "smooth" });
+    window.scrollTo({ top, behavior: scrollBehavior() });
     filtersBar.classList.add("filters-bar--highlighted");
     window.setTimeout(() => {
       filtersBar.classList.remove("filters-bar--highlighted");

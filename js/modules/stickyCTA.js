@@ -1,3 +1,5 @@
+import { scrollBehavior } from "../utils/motion.js";
+
 export default function initStickyCTA({ onScrollToFilters } = {}) {
   const cta = document.querySelector("[data-sticky-cta]");
   const footer = document.querySelector("footer.footer");
@@ -32,7 +34,7 @@ export default function initStickyCTA({ onScrollToFilters } = {}) {
     }
     const filtersBar = document.querySelector("#filters-bar");
     if (filtersBar) {
-      filtersBar.scrollIntoView({ behavior: "smooth", block: "start" });
+      filtersBar.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
     }
   });
 }

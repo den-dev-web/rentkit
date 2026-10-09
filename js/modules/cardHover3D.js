@@ -1,4 +1,7 @@
+import { prefersReducedMotion } from "../utils/motion.js";
+
 export default function initCardHover3D() {
+  if (prefersReducedMotion()) return;
   const cards = document.querySelectorAll(".property-card");
 
   cards.forEach((card) => {
