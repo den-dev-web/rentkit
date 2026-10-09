@@ -6,9 +6,20 @@ function getPropertyData() {
 
   const params = new URLSearchParams(window.location.search);
   const requestedId = params.get("id");
-  return (
-    dataSource.find((item) => item.id === requestedId) || dataSource[0] || null
-  );
+  // Без id показываем первый объект как демо; неизвестный id — «не найдено»
+  if (!requestedId) return dataSource[0];
+  return dataSource.find((item) => item.id === requestedId) || null;
+}
+
+function showNotFound() {
+  const root = document.querySelector(".property");
+  const notFound = root?.querySelector("[data-property-not-found]");
+  if (!root || !notFound) return;
+
+  [...root.children].forEach((el) => {
+    el.classList.toggle("u-hidden", el !== notFound);
+  });
+  document.title = `${notFound.querySelector("h2")?.textContent.trim()} — RentKit`;
 }
 
 function formatType(type) {
@@ -577,7 +588,10 @@ function fixSidebarOnMobile() {
 
 export default function initPropertyPage() {
   const propertyData = getPropertyData();
-  if (!propertyData) return;
+  if (!propertyData) {
+    showNotFound();
+    return;
+  }
 
   hydratePropertyPage(propertyData);
   initGallery();

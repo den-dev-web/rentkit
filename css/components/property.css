@@ -3,6 +3,18 @@
   background: var(--color-bg);
 }
 
+.property-not-found {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-md);
+  padding-block: var(--space-2xl);
+  text-align: center;
+}
+
+.property-not-found__text {
+  color: var(--color-text-muted);
+}
+
 .property__layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;

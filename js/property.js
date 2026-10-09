@@ -11,3 +11,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initStickyCTA();
   initScrollToTop();
 });
+
+document.querySelector("[data-year]").textContent = new Date().getFullYear();

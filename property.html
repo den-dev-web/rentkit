@@ -116,6 +116,22 @@
     </nav>
 
     <main class="property" data-property-id="">
+      <section
+        class="container property-not-found u-hidden"
+        data-property-not-found
+      >
+        <h2 class="property-not-found__title">Объект не найден</h2>
+        <p class="property-not-found__text">
+          Возможно, объявление снято с публикации или ссылка устарела.
+        </p>
+        <a
+          class="sidebar-btn property-not-found__link"
+          href="index.html#catalog"
+        >
+          Перейти в каталог
+        </a>
+      </section>
+
       <!-- ===========================
        HERO-ГАЛЕРЕЯ (ПРЕМИУМ)
        =========================== -->
@@ -199,8 +215,9 @@
           <!-- Хост -->
           <section class="property-section property-host">
             <img
-              src="assets/images/objects/rk-000002_host.jpg"
+              src="assets/images/host/rk-000002_host.jpg"
               class="property-host__avatar"
+              alt="Александра, хозяйка"
               data-property-host-avatar
             />
             <div>
@@ -248,21 +265,23 @@
         </aside>
       </div>
 
-      <section class="property-section property-reviews" id="reviews">
-        <h2 class="section-title">Отзывы гостей</h2>
+      <div class="container">
+        <section class="property-section property-reviews" id="reviews">
+          <h2 class="section-title">Отзывы гостей</h2>
 
-        <div class="reviews-summary">
-          <div class="reviews-summary__rating" data-reviews-rating>4.9</div>
-          <div>
-            <div class="reviews-summary__stars" data-reviews-stars>★★★★★</div>
-            <p class="reviews-summary__count" data-reviews-count>52 отзыва</p>
+          <div class="reviews-summary">
+            <div class="reviews-summary__rating" data-reviews-rating>4.9</div>
+            <div>
+              <div class="reviews-summary__stars" data-reviews-stars>★★★★★</div>
+              <p class="reviews-summary__count" data-reviews-count>52 отзыва</p>
+            </div>
           </div>
-        </div>
 
-        <div class="reviews-list" data-reviews-list></div>
+          <div class="reviews-list" data-reviews-list></div>
 
-        <button class="reviews-more" data-reviews-more>Показать ещё</button>
-      </section>
+          <button class="reviews-more" data-reviews-more>Показать ещё</button>
+        </section>
+      </div>
     </main>
 
     <footer class="footer" aria-labelledby="footer-title">
@@ -351,7 +370,9 @@
 
       <div class="footer__bottom">
         <div class="container footer__bottom-inner">
-          <p class="footer__copy">© 2025 RentKit. Все права защищены.</p>
+          <p class="footer__copy">
+            © <span data-year></span> RentKit. Все права защищены.
+          </p>
         </div>
       </div>
     </footer>
