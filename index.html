@@ -4,15 +4,31 @@
     <meta charset="UTF-8" />
     <title>RentKit — аренда квартир, домов и апартаментов</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="assets/icons/rentkit-favicon.png"
-    />
+    <link rel="icon" type="image/png" href="assets/icons/rentkit-favicon.png" />
     <meta
       name="description"
+      content="Каталог аренды квартир, домов и апартаментов в Киеве, Львове и Одессе: проверенные хозяева, честные фото и реальные виды из окон."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RentKit" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta
+      property="og:title"
       content="RentKit — аренда квартир, домов и апартаментов"
     />
+    <meta
+      property="og:description"
+      content="Каталог аренды квартир, домов и апартаментов в Киеве, Львове и Одессе: проверенные хозяева, честные фото и реальные виды из окон."
+    />
+    <meta property="og:url" content="https://den-dev-web.github.io/rentkit/" />
+    <meta
+      property="og:image"
+      content="https://den-dev-web.github.io/rentkit/assets/images/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://den-dev-web.github.io/rentkit/" />
 
     <!-- SETTINGS -->
     <link rel="stylesheet" href="css/tokens.css" />
@@ -49,6 +65,8 @@
             class="header__logo-image"
             src="assets/icons/rentkit-logo.png"
             alt="RentKit"
+            width="197"
+            height="80"
           />
         </a>
 
@@ -116,12 +134,15 @@
       <section id="hero" class="hero" aria-labelledby="hero-title">
         <div class="hero__bg-slider" data-hero-slider>
           <div class="hero__slide" data-slide>
+            <!-- LCP — заголовок, поэтому фон грузим сразу, но без конкуренции с CSS -->
             <img
               class="hero__bg-image"
               src="assets/images/hero/hero-main.jpg"
               alt="Вид из окна квартиры"
-              loading="lazy"
-              decoding="async"
+              width="1080"
+              height="1620"
+              loading="eager"
+              fetchpriority="low"
             />
             <p class="hero__title-slide">Вид, который вдохновляет жить лучше</p>
             <p class="hero__subtitle-slide">
@@ -133,6 +154,8 @@
               class="hero__bg-image"
               src="assets/images/hero/photo-1748185566683-50a608ed1c54.jpeg"
               alt="Вид на городской центр"
+              width="1080"
+              height="1620"
               loading="lazy"
               decoding="async"
             />
@@ -146,6 +169,8 @@
               class="hero__bg-image"
               src="assets/images/hero/photo-1748628719625-0a785e7cb1ad.jpeg"
               alt="Вид на море и набережную"
+              width="1080"
+              height="1441"
               loading="lazy"
               decoding="async"
             />
@@ -159,6 +184,8 @@
               class="hero__bg-image"
               src="assets/images/hero/photo-1749341919600-546dddc8d322.jpeg"
               alt="Вид на море и набережную"
+              width="1080"
+              height="1620"
               loading="lazy"
               decoding="async"
             />
@@ -176,8 +203,12 @@
         <div class="container hero__inner">
           <div class="hero__content">
             <div class="hero__panel">
-              <h1 id="hero-title" class="hero__title" data-hero-title></h1>
-              <p class="hero__subtitle" data-hero-subtitle></p>
+              <h1 id="hero-title" class="hero__title" data-hero-title>
+                Вид, который вдохновляет жить лучше
+              </h1>
+              <p class="hero__subtitle" data-hero-subtitle>
+                Подборка квартир с потрясающими городскими панорамами.
+              </p>
 
               <form
                 class="hero__search"
@@ -332,6 +363,8 @@
                 <img
                   src="assets/icons/rentkit-verified-property-owners.svg"
                   alt=""
+                  width="96"
+                  height="96"
                   aria-hidden="true"
                 />
               </div>
@@ -347,6 +380,8 @@
                 <img
                   src="assets/icons/rentkit-real-views.svg"
                   alt=""
+                  width="96"
+                  height="96"
                   aria-hidden="true"
                 />
               </div>
@@ -362,6 +397,8 @@
                 <img
                   src="assets/icons/rentkit-support.svg"
                   alt=""
+                  width="96"
+                  height="96"
                   aria-hidden="true"
                 />
               </div>
@@ -376,6 +413,8 @@
                 <img
                   src="assets/icons/rentkit-secure-rental-transactions.svg"
                   alt=""
+                  width="96"
+                  height="96"
                   aria-hidden="true"
                 />
               </div>
@@ -486,6 +525,8 @@
               class="footer__logo-image"
               src="assets/icons/rentkit-logo.png"
               alt="RentKit"
+              width="197"
+              height="80"
             />
           </a>
 
@@ -528,6 +569,8 @@
               <img
                 src="assets/icons/rentkit-instagram.svg"
                 alt=""
+                width="64"
+                height="64"
                 aria-hidden="true"
               />
             </a>
@@ -535,6 +578,8 @@
               <img
                 src="assets/icons/rentkit-facebook.svg"
                 alt=""
+                width="64"
+                height="64"
                 aria-hidden="true"
               />
             </a>
@@ -542,6 +587,8 @@
               <img
                 src="assets/icons/rentkit-twitter.svg"
                 alt=""
+                width="64"
+                height="64"
                 aria-hidden="true"
               />
             </a>

@@ -36,17 +36,20 @@ export default function initHeroSlider() {
     const title = titleNode ? titleNode.textContent : "";
     const subtitle = subtitleNode ? subtitleNode.textContent : "";
 
-    // скрываем старый текст
-    titleEl.dataset.state = "hidden";
-    subtitleEl.dataset.state = "hidden";
+    // Текст первого слайда уже в HTML (быстрый LCP) — не перерисовываем его
+    if (titleEl.textContent.trim() !== title.trim()) {
+      // скрываем старый текст
+      titleEl.dataset.state = "hidden";
+      subtitleEl.dataset.state = "hidden";
 
-    // ждем половину fade-out
-    setTimeout(() => {
-      titleEl.textContent = title;
-      subtitleEl.textContent = subtitle;
-      titleEl.dataset.state = "visible";
-      subtitleEl.dataset.state = "visible";
-    }, 350);
+      // ждем половину fade-out
+      setTimeout(() => {
+        titleEl.textContent = title;
+        subtitleEl.textContent = subtitle;
+        titleEl.dataset.state = "visible";
+        subtitleEl.dataset.state = "visible";
+      }, 350);
+    }
 
     // Прогресс-бар (полный сброс и запуск анимации)
     progress.style.animation = "none";
