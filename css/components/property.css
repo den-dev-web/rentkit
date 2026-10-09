@@ -404,6 +404,7 @@
 
 .review__author {
   margin: 0;
+  font-size: var(--font-size-md);
   font-weight: 600;
 }
 

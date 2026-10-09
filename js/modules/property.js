@@ -236,7 +236,7 @@ function hydratePropertyPage(propertyData) {
       article.innerHTML = `
         <img src="${review.avatar || ""}" class="review__avatar" alt="" />
         <div class="review__content">
-          <h4 class="review__author">${review.author || "Гость"}</h4>
+          <h3 class="review__author">${review.author || "Гость"}</h3>
           <div class="review__stars">${formatStars(review.rating)}</div>
           <p class="review__text">${review.text || ""}</p>
         </div>
@@ -388,6 +388,26 @@ function initReviewsToggle() {
       expanded = false;
     }
   });
+}
+
+// Удерживает Tab внутри открытой модалки
+function trapFocus(container, event) {
+  const focusable = [
+    ...container.querySelectorAll(
+      'button, [href], input, textarea, [tabindex]:not([tabindex="-1"])'
+    ),
+  ].filter((el) => el.offsetParent !== null);
+  if (!focusable.length) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
 }
 
 function initCalendar(propertyData) {
@@ -558,9 +578,9 @@ function initCalendar(propertyData) {
   openBtn.addEventListener("click", openModal);
   closeBtns.forEach((btn) => btn.addEventListener("click", closeModal));
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal.classList.contains("calendar-modal--open")) {
-      closeModal();
-    }
+    if (!modal.classList.contains("calendar-modal--open")) return;
+    if (event.key === "Tab") trapFocus(modal, event);
+    if (event.key === "Escape") closeModal();
   });
 }
 
@@ -620,9 +640,9 @@ function initContactModal() {
     .querySelectorAll("[data-contact-close]")
     .forEach((btn) => btn.addEventListener("click", closeModal));
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal.classList.contains("contact-modal--open")) {
-      closeModal();
-    }
+    if (!modal.classList.contains("contact-modal--open")) return;
+    if (event.key === "Tab") trapFocus(modal, event);
+    if (event.key === "Escape") closeModal();
   });
 
   // Повторная проверка поля, как только пользователь исправляет ошибку
