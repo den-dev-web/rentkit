@@ -172,7 +172,8 @@
   border-top: 1px solid var(--color-border-soft);
 }
 
-.property-section:first-child {
+/* Только первая секция колонки контента — не обнуляет отступы отзывов */
+.property__content > .property-section:first-child {
   margin-top: 0;
   padding-top: 0;
   border-top: 0;
