@@ -7,6 +7,7 @@ export default function initCatalog() {
   const loadMoreBtn = document.querySelector("[data-load-more]");
   const loadMoreWrap = loadMoreBtn?.closest(".catalog__actions");
   const sentinel = document.querySelector("[data-catalog-sentinel]");
+  const emptyState = document.querySelector("[data-catalog-empty]");
   const filtersForm = document.querySelector("[data-filters-form]");
   const modal = document.querySelector("[data-filters-modal]");
   const openBtn = document.querySelector("[data-open-filters]");
@@ -509,8 +510,12 @@ export default function initCatalog() {
   };
 
   const renderState = (filtered) => {
+    if (emptyState) emptyState.hidden = filtered.length > 0;
     if (filtered.length === 0) {
-      showSkeletons();
+      skeletonGrid.innerHTML = "";
+      skeletonGrid.hidden = true;
+      catalogGrid.innerHTML = "";
+      catalogGrid.hidden = true;
       updateLoadMoreVisibility(0);
       return;
     }
@@ -732,7 +737,6 @@ export default function initCatalog() {
         if (value === "20000") {
           if (maxInput) maxInput.value = "20000";
         } else if (value === "40000") {
-          if (minInput) minInput.value = "20000";
           if (maxInput) maxInput.value = "40000";
         } else if (value === "40000+") {
           if (minInput) minInput.value = "40000";
@@ -854,7 +858,6 @@ export default function initCatalog() {
     if (heroBudget === "20000") {
       if (maxInput) maxInput.value = "20000";
     } else if (heroBudget === "40000") {
-      if (minInput) minInput.value = "20000";
       if (maxInput) maxInput.value = "40000";
     } else if (heroBudget === "40000+") {
       if (minInput) minInput.value = "40000";
