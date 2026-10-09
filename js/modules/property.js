@@ -22,6 +22,42 @@ function showNotFound() {
   document.title = `${notFound.querySelector("h2")?.textContent.trim()} — RentKit`;
 }
 
+// Все фото объектов — 1600×600; рядом лежат .avif и .webp версии
+const PHOTO_WIDTH = 1600;
+const PHOTO_HEIGHT = 600;
+const THUMB_WIDTH = 267;
+const THUMB_HEIGHT = 100;
+const MODERN_FORMATS = [
+  ["avif", "image/avif"],
+  ["webp", "image/webp"],
+];
+
+function createPicture(src, alt, { imgClass, pictureClass, eager = false }) {
+  const picture = document.createElement("picture");
+  if (pictureClass) picture.className = pictureClass;
+
+  if (src.endsWith(".jpg")) {
+    MODERN_FORMATS.forEach(([ext, type]) => {
+      const source = document.createElement("source");
+      source.srcset = src.replace(/\.jpg$/, `.${ext}`);
+      source.type = type;
+      picture.appendChild(source);
+    });
+  }
+
+  const img = document.createElement("img");
+  img.className = imgClass;
+  img.src = src;
+  img.alt = alt;
+  img.width = PHOTO_WIDTH;
+  img.height = PHOTO_HEIGHT;
+  img.decoding = "async";
+  img.loading = eager ? "eager" : "lazy";
+  if (eager) img.fetchPriority = "high";
+  picture.appendChild(img);
+  return picture;
+}
+
 function formatType(type) {
   const types = {
     studio: "Студия",
@@ -128,6 +164,11 @@ function hydratePropertyPage(propertyData) {
     descriptionEl.textContent = propertyData.description;
   }
 
+  const metaDescriptionEl = document.querySelector('meta[name="description"]');
+  if (metaDescriptionEl && propertyData.description) {
+    metaDescriptionEl.content = propertyData.description;
+  }
+
   const featuresEl = document.querySelector("[data-property-features]");
   if (featuresEl) {
     const features = Array.isArray(propertyData.features)
@@ -150,11 +191,11 @@ function hydratePropertyPage(propertyData) {
     );
     galleryEl.innerHTML = "";
     gallery.forEach((item) => {
-      const img = document.createElement("img");
-      img.className = "property-grid-gallery__image";
-      img.src = item.src;
-      img.alt = item.alt;
-      galleryEl.appendChild(img);
+      galleryEl.appendChild(
+        createPicture(item.src, item.alt, {
+          imgClass: "property-grid-gallery__image",
+        })
+      );
     });
   }
 
@@ -234,7 +275,7 @@ function hydratePropertyPage(propertyData) {
       const article = document.createElement("article");
       article.className = "review";
       article.innerHTML = `
-        <img src="${review.avatar || ""}" class="review__avatar" alt="" />
+        <img src="${review.avatar || ""}" class="review__avatar" alt="" width="128" height="128" loading="lazy" />
         <div class="review__content">
           <h3 class="review__author">${review.author || "Гость"}</h3>
           <div class="review__stars">${formatStars(review.rating)}</div>
@@ -277,11 +318,14 @@ function renderHeroGallery(propertyData) {
     slide.className = `property-hero__image${
       index === 0 ? " property-hero__image--active" : ""
     }`;
-    const img = document.createElement("img");
-    img.className = "property-hero__image-item";
-    img.src = item.src;
-    img.alt = item.alt;
-    slide.appendChild(img);
+    // Первое фото — LCP страницы
+    slide.appendChild(
+      createPicture(item.src, item.alt, {
+        imgClass: "property-hero__image-item",
+        pictureClass: "property-hero__picture",
+        eager: index === 0,
+      })
+    );
     imagesEl.appendChild(slide);
   });
 
@@ -290,6 +334,8 @@ function renderHeroGallery(propertyData) {
     thumb.className = "property-hero__thumb";
     thumb.src = item.src || item;
     thumb.alt = item.alt || `Миниатюра ${index + 1}`;
+    thumb.width = THUMB_WIDTH;
+    thumb.height = THUMB_HEIGHT;
     if (index === 0) thumb.classList.add("property-hero__thumb--active");
     thumbsEl.appendChild(thumb);
   });
