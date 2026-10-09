@@ -291,6 +291,8 @@
       <!-- КАТАЛОГ -->
       <section id="catalog" class="catalog" aria-labelledby="catalog-title">
         <div class="container">
+          <h2 id="catalog-title" class="u-visually-hidden">Каталог жилья</h2>
+
           <!-- Skeleton / loader -->
           <div class="property-grid" data-skeleton-grid></div>
 
@@ -571,7 +573,13 @@
       <div class="filters-modal__panel">
         <header class="filters-modal__header">
           <h2 class="filters-modal__title" id="filters-title">Фильтры</h2>
-          <button class="filters-modal__close" data-close-filters>✕</button>
+          <button
+            class="filters-modal__close"
+            data-close-filters
+            aria-label="Закрыть фильтры"
+          >
+            ✕
+          </button>
         </header>
 
         <div class="filters-modal__content">

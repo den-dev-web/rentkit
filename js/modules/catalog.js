@@ -167,16 +167,28 @@ export default function initCatalog() {
     }
   };
 
+  const setTriggerExpanded = (filter, isExpanded) => {
+    filter
+      .querySelector("[data-filter-trigger]")
+      ?.setAttribute("aria-expanded", String(isExpanded));
+  };
+
   const openFilterPopover = (filter) => {
     if (!filter) return;
     filter.classList.add("filter--open");
     attachFloatingPopover(filter);
+    setTriggerExpanded(filter, true);
+    // Поповер в модалке переносится в конец DOM — фокус переводим явно
+    getFilterPopover(filter)
+      ?.querySelector(".filter-list__item, .chip")
+      ?.focus();
   };
 
   const closeFilterPopover = (filter) => {
     if (!filter) return;
     filter.classList.remove("filter--open");
     detachFloatingPopover(filter);
+    setTriggerExpanded(filter, false);
   };
 
   const getAppliedFilters = () => {
@@ -714,7 +726,20 @@ export default function initCatalog() {
     }
   });
 
+  document.querySelectorAll("[data-filter-trigger]").forEach((trigger) => {
+    trigger.setAttribute("aria-expanded", "false");
+  });
+
   document.querySelectorAll(".filter-list__item").forEach((item) => {
+    // Пункты списка — <li>, поэтому делаем их доступными с клавиатуры
+    item.tabIndex = 0;
+    item.setAttribute("role", "button");
+    item.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      item.click();
+    });
+
     item.addEventListener("click", () => {
       const popover = item.closest(".filter-popover");
       const filter =
@@ -756,6 +781,7 @@ export default function initCatalog() {
       }
 
       closeFilterPopover(filter);
+      filter.querySelector("[data-filter-trigger]")?.focus();
 
       if (filter.dataset.filter === "sorting") {
         appliedFilters = {
@@ -952,11 +978,49 @@ export default function initCatalog() {
     refreshCatalog();
   });
 
+  // Capture: Esc сначала закрывает открытый поповер, а не всю модалку
+  window.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.key !== "Escape") return;
+      const openFilter = document.querySelector(".filter.filter--open");
+      if (!openFilter) return;
+      event.stopPropagation();
+      closeFilterPopover(openFilter);
+      openFilter.querySelector("[data-filter-trigger]")?.focus();
+    },
+    true,
+  );
+
+  const trapFocus = (event) => {
+    const focusable = [
+      ...modal.querySelectorAll(
+        'button, [href], input, textarea, [tabindex]:not([tabindex="-1"])',
+      ),
+    ].filter((el) => el.offsetParent !== null);
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
   if (modal) {
     document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape") return;
       if (!modal.classList.contains("filters-modal--open")) return;
+      if (event.key === "Tab") {
+        trapFocus(event);
+        return;
+      }
+      if (event.key !== "Escape") return;
       modal.classList.remove("filters-modal--open");
+      setScrollLock(false);
       if (lastFocusedElement && lastFocusedElement.focus) {
         lastFocusedElement.focus();
       } else if (openBtn && openBtn.focus) {
