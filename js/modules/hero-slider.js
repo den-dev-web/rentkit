@@ -1,24 +1,15 @@
 export default function initHeroSlider() {
   const slider = document.querySelector("[data-hero-slider]");
-  if (!slider) {
-    console.warn("Hero slider root not found");
-    return;
-  }
+  if (!slider) return;
 
   const slides = Array.from(slider.querySelectorAll("[data-slide]"));
-  if (slides.length === 0) {
-    console.warn("No slides found inside hero slider");
-    return;
-  }
+  if (slides.length === 0) return;
 
   const titleEl = document.querySelector("[data-hero-title]");
   const subtitleEl = document.querySelector("[data-hero-subtitle]");
   const progress = document.querySelector("[data-hero-progress]");
 
-  if (!titleEl || !subtitleEl || !progress) {
-    console.warn("Hero text or progress elements not found");
-    return;
-  }
+  if (!titleEl || !subtitleEl || !progress) return;
 
   let index = 0;
   const DURATION = 5500;
@@ -28,10 +19,7 @@ export default function initHeroSlider() {
   // ---------------------------
   function applySlide(i) {
     const slide = slides[i];
-    if (!slide) {
-      console.warn("Slide index missing:", i);
-      return;
-    }
+    if (!slide) return;
 
     // Видимые / невидимые слайды
     slides.forEach((s) => {

@@ -183,11 +183,6 @@
     margin-bottom: 12px;
   }
 
-  .hero__search [data-filter="hero_city"],
-  .hero__search [data-filter="hero_priceMax"] {
-    display: none;
-  }
-
   .hero__highlights {
     flex-direction: column;
   }
