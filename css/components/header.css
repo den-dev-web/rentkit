@@ -44,6 +44,51 @@
   gap: 16px;
 }
 
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА */
+.lang-switch {
+  display: flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--color-surface-soft);
+}
+
+.lang-switch__option {
+  min-width: 34px;
+  border: none;
+  background: transparent;
+  min-height: 30px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-subtle);
+  transition: background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.lang-switch__option[aria-pressed="true"] {
+  background: var(--color-white);
+  color: var(--color-primary);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12);
+}
+
+.lang-switch__option:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+}
+
+@media (hover: hover) {
+  .lang-switch__option:hover {
+    color: var(--color-primary);
+  }
+}
+
 /* ЛОГО */
 .header__logo-image {
   height: 36px;

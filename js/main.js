@@ -1,3 +1,4 @@
+import { applyTranslations, initLangSwitcher } from "./modules/i18n.js";
 import initHeader from "./modules/header.js";
 import initHeroSlider from "./modules/hero-slider.js";
 import initCatalog from "./modules/catalog.js";
@@ -9,6 +10,9 @@ import initStickyCTA from "./modules/stickyCTA.js";
 import initScrollToTop from "./modules/scrollToTop.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Переводы применяются до инициализации модулей, читающих тексты из DOM
+  applyTranslations();
+  initLangSwitcher();
   initHeader();
   initHeroSlider();
   initReveal();

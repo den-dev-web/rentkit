@@ -79,21 +79,55 @@
           </ul>
         </nav>
 
-        <!-- CTA -->
-        <a class="header__cta" href="index.html#catalog">Подобрать жильё</a>
+        <div class="header__actions">
+          <div
+            class="lang-switch"
+            role="group"
+            aria-label="Language"
+            data-i18n-attr="aria-label: lang.label"
+          >
+            <button
+              type="button"
+              class="lang-switch__option"
+              data-lang-option="en"
+              lang="en"
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              class="lang-switch__option"
+              data-lang-option="uk"
+              lang="uk"
+            >
+              UA
+            </button>
+            <button
+              type="button"
+              class="lang-switch__option"
+              data-lang-option="ru"
+              lang="ru"
+            >
+              RU
+            </button>
+          </div>
 
-        <!-- БУРГЕР -->
-        <button
-          class="header__burger"
-          aria-label="Меню"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-          data-burger
-        >
-          <span class="header__burger-line header__burger-line--top"></span>
-          <span class="header__burger-line header__burger-line--middle"></span>
-          <span class="header__burger-line header__burger-line--bottom"></span>
-        </button>
+          <!-- CTA -->
+          <a class="header__cta" href="index.html#catalog">Подобрать жильё</a>
+
+          <!-- БУРГЕР -->
+          <button
+            class="header__burger"
+            aria-label="Меню"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            data-burger
+          >
+            <span class="header__burger-line header__burger-line--top"></span>
+            <span class="header__burger-line header__burger-line--middle"></span>
+            <span class="header__burger-line header__burger-line--bottom"></span>
+          </button>
+        </div>
       </div>
     </header>
     <!-- МОБИЛЬНОЕ МЕНЮ-->
