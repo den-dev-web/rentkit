@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>RentKit — аренда квартир, домов и апартаментов</title>
+    <title data-i18n="meta.title">RentKit — apartments, houses and studios for rent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="assets/icons/rentkit-favicon.png" />
     <meta
       name="description"
-      content="Каталог аренды квартир, домов и апартаментов в Киеве, Львове и Одессе: проверенные хозяева, честные фото и реальные виды из окон."
+      content="Rental catalog of apartments, houses and studios in Kyiv, Lviv and Odesa: verified owners, honest photos and real window views." data-i18n-attr="content: meta.indexDescription"
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="RentKit" />
-    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:locale" content="en_US" />
     <meta
       property="og:title"
-      content="RentKit — аренда квартир, домов и апартаментов"
+      content="RentKit — apartments, houses and studios for rent" data-i18n-attr="content: meta.title"
     />
     <meta
       property="og:description"
-      content="Каталог аренды квартир, домов и апартаментов в Киеве, Львове и Одессе: проверенные хозяева, честные фото и реальные виды из окон."
+      content="Rental catalog of apartments, houses and studios in Kyiv, Lviv and Odesa: verified owners, honest photos and real window views." data-i18n-attr="content: meta.indexDescription"
     />
     <meta property="og:url" content="https://den-dev-web.github.io/rentkit/" />
     <meta
@@ -71,11 +71,11 @@
         </a>
 
         <!-- ДЕСКТОП-НАВИГАЦИЯ -->
-        <nav class="header__nav" aria-label="Основная навигация">
+        <nav class="header__nav" aria-label="Main navigation" data-i18n-attr="aria-label: nav.mainLabel">
           <ul class="header__menu">
-            <li><a class="header__link" href="#catalog">Каталог</a></li>
-            <li><a class="header__link" href="#benefits">Почему мы</a></li>
-            <li><a class="header__link" href="#faq">FAQ</a></li>
+            <li><a class="header__link" href="#catalog" data-i18n="nav.catalog">Catalog</a></li>
+            <li><a class="header__link" href="#benefits" data-i18n="nav.benefits">Why us</a></li>
+            <li><a class="header__link" href="#faq" data-i18n="nav.faq">FAQ</a></li>
           </ul>
         </nav>
 
@@ -113,14 +113,14 @@
           </div>
 
           <!-- CTA -->
-          <a class="header__cta" href="#filters-bar" data-scroll-to-filters>
-            Подобрать жильё
+          <a class="header__cta" href="#filters-bar" data-scroll-to-filters data-i18n="cta.findHome">
+            Find a home
           </a>
 
           <!-- БУРГЕР -->
           <button
             class="header__burger"
-            aria-label="Меню"
+            aria-label="Menu" data-i18n-attr="aria-label: menu.open"
             aria-expanded="false"
             aria-controls="mobile-menu"
             data-burger
@@ -136,30 +136,30 @@
     <nav
       class="mobile-menu"
       id="mobile-menu"
-      aria-label="Мобильная навигация"
+      aria-label="Mobile navigation" data-i18n-attr="aria-label: nav.mobileLabel"
       aria-hidden="true"
       data-mobile-menu
     >
       <div class="mobile-menu__backdrop" data-mobile-backdrop></div>
       <div class="mobile-menu__panel" data-mobile-panel>
         <div class="mobile-menu__header">
-          <span class="mobile-menu__title">Меню</span>
+          <span class="mobile-menu__title" data-i18n="menu.title">Menu</span>
           <button
             class="mobile-menu__close"
             type="button"
-            aria-label="Закрыть меню"
+            aria-label="Close menu" data-i18n-attr="aria-label: menu.close"
             data-mobile-close
           >
             ✕
           </button>
         </div>
         <ul class="mobile-menu__list">
-          <li><a class="mobile-menu__link" href="#catalog">Каталог</a></li>
-          <li><a class="mobile-menu__link" href="#benefits">Почему мы</a></li>
-          <li><a class="mobile-menu__link" href="#faq">FAQ</a></li>
+          <li><a class="mobile-menu__link" href="#catalog" data-i18n="nav.catalog">Catalog</a></li>
+          <li><a class="mobile-menu__link" href="#benefits" data-i18n="nav.benefits">Why us</a></li>
+          <li><a class="mobile-menu__link" href="#faq" data-i18n="nav.faq">FAQ</a></li>
         </ul>
 
-        <a class="mobile-menu__cta" href="#catalog">Подобрать жильё</a>
+        <a class="mobile-menu__cta" href="#catalog" data-i18n="cta.findHome">Find a home</a>
       </div>
     </nav>
 
@@ -172,60 +172,60 @@
             <img
               class="hero__bg-image"
               src="assets/images/hero/hero-main.jpg"
-              alt="Вид из окна квартиры"
+              alt="View from an apartment window" data-i18n-attr="alt: hero.slide1.alt"
               width="1080"
               height="1620"
               loading="eager"
               fetchpriority="low"
             />
-            <p class="hero__title-slide">Вид, который вдохновляет жить лучше</p>
-            <p class="hero__subtitle-slide">
-              Подборка квартир с потрясающими городскими панорамами.
+            <p class="hero__title-slide" data-i18n="hero.slide1.title">A view that inspires a better life</p>
+            <p class="hero__subtitle-slide" data-i18n="hero.slide1.subtitle">
+              Apartments with stunning city panoramas.
             </p>
           </div>
           <div class="hero__slide" data-slide>
             <img
               class="hero__bg-image"
               src="assets/images/hero/photo-1748185566683-50a608ed1c54.jpeg"
-              alt="Вид на городской центр"
+              alt="View of the city center" data-i18n-attr="alt: hero.slide2.alt"
               width="1080"
               height="1620"
               loading="lazy"
               decoding="async"
             />
-            <p class="hero__title-slide">Окна, в которые хочется смотреть</p>
-            <p class="hero__subtitle-slide">
-              Апартаменты с лучшими видами в вашем городе.
+            <p class="hero__title-slide" data-i18n="hero.slide2.title">Windows you'll want to look out of</p>
+            <p class="hero__subtitle-slide" data-i18n="hero.slide2.subtitle">
+              Apartments with the best views in your city.
             </p>
           </div>
           <div class="hero__slide" data-slide>
             <img
               class="hero__bg-image"
               src="assets/images/hero/photo-1748628719625-0a785e7cb1ad.jpeg"
-              alt="Вид на море и набережную"
+              alt="View of the sea and the embankment" data-i18n-attr="alt: hero.slide3.alt"
               width="1080"
               height="1441"
               loading="lazy"
               decoding="async"
             />
-            <p class="hero__title-slide">Просыпайтесь с видом на море</p>
-            <p class="hero__subtitle-slide">
-              Подборка жилья на побережье с прямым видом на воду.
+            <p class="hero__title-slide" data-i18n="hero.slide3.title">Wake up to a sea view</p>
+            <p class="hero__subtitle-slide" data-i18n="hero.slide3.subtitle">
+              Seaside homes with a direct view of the water.
             </p>
           </div>
           <div class="hero__slide" data-slide>
             <img
               class="hero__bg-image"
               src="assets/images/hero/photo-1749341919600-546dddc8d322.jpeg"
-              alt="Вид на море и набережную"
+              alt="View of the sea and the embankment" data-i18n-attr="alt: hero.slide3.alt"
               width="1080"
               height="1620"
               loading="lazy"
               decoding="async"
             />
-            <p class="hero__title-slide">Окна, в которые хочется смотреть</p>
-            <p class="hero__subtitle-slide">
-              Апартаменты с лучшими видами в вашем городе.
+            <p class="hero__title-slide" data-i18n="hero.slide2.title">Windows you'll want to look out of</p>
+            <p class="hero__subtitle-slide" data-i18n="hero.slide2.subtitle">
+              Apartments with the best views in your city.
             </p>
           </div>
           <!-- можно добавлять/удалять слайды сколько угодно -->
@@ -237,35 +237,35 @@
         <div class="container hero__inner">
           <div class="hero__content">
             <div class="hero__panel">
-              <h1 id="hero-title" class="hero__title" data-hero-title>
-                Вид, который вдохновляет жить лучше
+              <h1 id="hero-title" class="hero__title" data-hero-title data-i18n="hero.slide1.title">
+                A view that inspires a better life
               </h1>
-              <p class="hero__subtitle" data-hero-subtitle>
-                Подборка квартир с потрясающими городскими панорамами.
+              <p class="hero__subtitle" data-hero-subtitle data-i18n="hero.slide1.subtitle">
+                Apartments with stunning city panoramas.
               </p>
 
               <form
                 class="hero__search"
-                aria-label="Быстрый поиск недвижимости"
+                aria-label="Quick property search" data-i18n-attr="aria-label: hero.searchLabel"
                 data-hero-form
               >
                 <div class="filter hero__field" data-filter="hero_city">
                   <input type="hidden" name="hero_city" value="" />
 
                   <button type="button" class="filter-pill" data-filter-trigger>
-                    <span class="filter-label">Город</span>
-                    <span class="filter-value" data-filter-value>Любой</span>
+                    <span class="filter-label" data-i18n="filter.city">City</span>
+                    <span class="filter-value" data-filter-value data-i18n="filter.anyCity">Any</span>
                   </button>
 
                   <div class="filter-popover" data-filter-popover>
                     <ul class="filter-list">
-                      <li class="filter-list__item" data-value="">Любой</li>
-                      <li class="filter-list__item" data-value="Киев">Киев</li>
-                      <li class="filter-list__item" data-value="Львов">
-                        Львов
+                      <li class="filter-list__item" data-value="" data-i18n="filter.anyCity">Any</li>
+                      <li class="filter-list__item" data-value="Киев" data-i18n="city.kyiv">Kyiv</li>
+                      <li class="filter-list__item" data-value="Львов" data-i18n="city.lviv">
+                        Lviv
                       </li>
-                      <li class="filter-list__item" data-value="Одесса">
-                        Одесса
+                      <li class="filter-list__item" data-value="Одесса" data-i18n="city.odesa">
+                        Odesa
                       </li>
                     </ul>
                   </div>
@@ -274,42 +274,42 @@
                 <div class="filter hero__field" data-filter="hero_priceMax">
                   <input type="hidden" name="hero_priceMax" value="" />
                   <button type="button" class="filter-pill" data-filter-trigger>
-                    <span class="filter-label">Бюджет</span>
-                    <span class="filter-value" data-filter-value>Любой</span>
+                    <span class="filter-label" data-i18n="filter.budget">Budget</span>
+                    <span class="filter-value" data-filter-value data-i18n="filter.any">Any</span>
                   </button>
                   <div class="filter-popover" data-filter-popover>
                     <ul class="filter-list">
-                      <li class="filter-list__item" data-value="">Любой</li>
-                      <li class="filter-list__item" data-value="20000">
-                        До 20 000 ₴
+                      <li class="filter-list__item" data-value="" data-i18n="filter.any">Any</li>
+                      <li class="filter-list__item" data-value="20000" data-i18n="price.upTo20">
+                        Up to 20,000 ₴
                       </li>
-                      <li class="filter-list__item" data-value="40000">
-                        До 40 000 ₴
+                      <li class="filter-list__item" data-value="40000" data-i18n="price.upTo40">
+                        Up to 40,000 ₴
                       </li>
-                      <li class="filter-list__item" data-value="40000+">
-                        Более 40 000 ₴
+                      <li class="filter-list__item" data-value="40000+" data-i18n="price.over40">
+                        Over 40,000 ₴
                       </li>
                     </ul>
                   </div>
                 </div>
-                <button type="submit" class="hero__button">
-                  Подобрать варианты
+                <button type="submit" class="hero__button" data-i18n="hero.submit">
+                  Show options
                 </button>
               </form>
 
               <!-- контекст / факты -->
               <ul class="hero__highlights">
                 <li class="hero__highlight">
-                  <span class="hero__highlight-label">1 240+</span>
-                  объявлений с видами
+                  <span class="hero__highlight-label" data-i18n="hero.highlight1.value">1,240+</span>
+                  <span data-i18n="hero.highlight1.text">listings with views</span>
                 </li>
                 <li class="hero__highlight">
                   <span class="hero__highlight-label">35</span>
-                  городов в базе
+                  <span data-i18n="hero.highlight2.text">cities in our database</span>
                 </li>
                 <li class="hero__highlight">
                   <span class="hero__highlight-label">24/7</span>
-                  поддержка арендаторов
+                  <span data-i18n="hero.highlight3.text">tenant support</span>
                 </li>
               </ul>
             </div>
@@ -329,22 +329,22 @@
           </div>
 
           <div class="filters-actions">
-            <button class="filters-btn" data-open-filters>Фильтры</button>
+            <button class="filters-btn" data-open-filters data-i18n="filters.open">Filters</button>
             <div class="filter filter--sorting" data-filter="sorting">
               <button type="button" class="filter-pill" data-filter-trigger>
-                <span class="filter-label">Сортировка</span>
-                <span class="filter-value" data-filter-value>Новые</span>
+                <span class="filter-label" data-i18n="sort.label">Sort</span>
+                <span class="filter-value" data-filter-value data-i18n="sort.newest">Newest</span>
               </button>
               <div class="filter-popover" data-filter-popover>
                 <ul class="filter-list">
-                  <li class="filter-list__item" data-value="date-desc">
-                    Новые
+                  <li class="filter-list__item" data-value="date-desc" data-i18n="sort.newest">
+                    Newest
                   </li>
-                  <li class="filter-list__item" data-value="price-asc">
-                    Сначала дешевле
+                  <li class="filter-list__item" data-value="price-asc" data-i18n="sort.priceAsc">
+                    Price: low to high
                   </li>
-                  <li class="filter-list__item" data-value="price-desc">
-                    Сначала дороже
+                  <li class="filter-list__item" data-value="price-desc" data-i18n="sort.priceDesc">
+                    Price: high to low
                   </li>
                 </ul>
               </div>
@@ -356,7 +356,7 @@
       <!-- КАТАЛОГ -->
       <section id="catalog" class="catalog" aria-labelledby="catalog-title">
         <div class="container">
-          <h2 id="catalog-title" class="u-visually-hidden">Каталог жилья</h2>
+          <h2 id="catalog-title" class="u-visually-hidden" data-i18n="catalog.title">Rental catalog</h2>
 
           <!-- Skeleton / loader -->
           <div class="property-grid" data-skeleton-grid></div>
@@ -364,8 +364,8 @@
           <!-- Реальный каталог -->
           <div class="property-grid" data-catalog-grid hidden></div>
 
-          <p class="catalog__empty" data-catalog-empty hidden>
-            Ничего не найдено. Попробуйте изменить параметры фильтров.
+          <p class="catalog__empty" data-catalog-empty hidden data-i18n="catalog.empty">
+            Nothing found. Try changing the filter settings.
           </p>
 
           <!-- Sentinel для infinite scroll -->
@@ -377,8 +377,8 @@
 
           <!-- fallback-кнопка для браузеров без JS или IO -->
           <div class="catalog__actions">
-            <button type="button" class="catalog__load-more" data-load-more>
-              Показать ещё
+            <button type="button" class="catalog__load-more" data-load-more data-i18n="common.showMore">
+              Show more
             </button>
           </div>
         </div>
@@ -387,8 +387,8 @@
       <!-- ПРЕИМУЩЕСТВА -->
       <section id="benefits" class="benefits" aria-labelledby="benefits-title">
         <div class="container">
-          <h2 id="benefits-title" class="benefits__title" data-cascade>
-            Почему выбирают RentKit
+          <h2 id="benefits-title" class="benefits__title" data-cascade data-i18n="benefits.title">
+            Why choose RentKit
           </h2>
 
           <div class="benefits__grid" data-reveal>
@@ -402,10 +402,9 @@
                   aria-hidden="true"
                 />
               </div>
-              <h3 class="benefits__name">Проверенные хозяева</h3>
-              <p class="benefits__desc">
-                Мы вручную проверяем каждое объявление, чтобы исключить фейки и
-                недостоверные данные.
+              <h3 class="benefits__name" data-i18n="benefits.item1.title">Verified owners</h3>
+              <p class="benefits__desc" data-i18n="benefits.item1.text">
+                We manually check every listing to rule out fakes and inaccurate details.
               </p>
             </article>
 
@@ -419,10 +418,9 @@
                   aria-hidden="true"
                 />
               </div>
-              <h3 class="benefits__name">Реальные виды из окон</h3>
-              <p class="benefits__desc">
-                Фото проходят модерацию — никаких красивых картинок с интернета,
-                только настоящие снимки.
+              <h3 class="benefits__name" data-i18n="benefits.item2.title">Real window views</h3>
+              <p class="benefits__desc" data-i18n="benefits.item2.text">
+                Photos are moderated — no pretty pictures from the internet, only real shots.
               </p>
             </article>
 
@@ -436,9 +434,9 @@
                   aria-hidden="true"
                 />
               </div>
-              <h3 class="benefits__name">Поддержка 24/7</h3>
-              <p class="benefits__desc">
-                Поможем уточнить детали, подобрать жильё и связаться с хозяином.
+              <h3 class="benefits__name" data-i18n="benefits.item3.title">24/7 support</h3>
+              <p class="benefits__desc" data-i18n="benefits.item3.text">
+                We'll help clarify details, find a home and get in touch with the owner.
               </p>
             </article>
 
@@ -452,9 +450,9 @@
                   aria-hidden="true"
                 />
               </div>
-              <h3 class="benefits__name">Безопасные сделки</h3>
-              <p class="benefits__desc">
-                Аренда проходит по проверенному процессу, а данные защищены.
+              <h3 class="benefits__name" data-i18n="benefits.item4.title">Safe transactions</h3>
+              <p class="benefits__desc" data-i18n="benefits.item4.text">
+                Rentals follow a proven process, and your data is protected.
               </p>
             </article>
           </div>
@@ -464,7 +462,7 @@
       <!-- FAQ -->
       <section id="faq" class="faq" aria-labelledby="faq-title">
         <div class="container">
-          <h2 id="faq-title" class="faq__title" data-cascade>Частые вопросы</h2>
+          <h2 id="faq-title" class="faq__title" data-cascade data-i18n="faq.title">Frequently asked questions</h2>
 
           <div class="faq__list" data-faq>
             <!-- ПАНЕЛЬ 1 -->
@@ -473,9 +471,8 @@
                 class="faq__question"
                 aria-expanded="false"
                 aria-controls="faq-panel-1"
-                id="faq-question-1"
-              >
-                Как проверить, что объект не фейковый?
+                id="faq-question-1" data-i18n="faq.q1">
+                How can I check that a listing isn't fake?
               </button>
 
               <div
@@ -485,9 +482,8 @@
                 aria-labelledby="faq-question-1"
                 hidden
               >
-                <p class="faq__answer-text">
-                  Все объекты проходят ручную модерацию — мы проверяем фото,
-                  документы и соответствие описания реальности.
+                <p class="faq__answer-text" data-i18n="faq.a1">
+                  Every property goes through manual moderation — we check the photos, documents and whether the description matches reality.
                 </p>
               </div>
             </article>
@@ -498,9 +494,8 @@
                 class="faq__question"
                 aria-expanded="false"
                 aria-controls="faq-panel-2"
-                id="faq-question-2"
-              >
-                Можно ли связаться с хозяином напрямую?
+                id="faq-question-2" data-i18n="faq.q2">
+                Can I contact the owner directly?
               </button>
 
               <div
@@ -510,9 +505,8 @@
                 aria-labelledby="faq-question-2"
                 hidden
               >
-                <p class="faq__answer-text">
-                  Да, после подтверждения заявки RentKit передает вам прямые
-                  контакты владельца.
+                <p class="faq__answer-text" data-i18n="faq.a2">
+                  Yes, once your request is confirmed, RentKit shares the owner's direct contacts with you.
                 </p>
               </div>
             </article>
@@ -523,9 +517,8 @@
                 class="faq__question"
                 aria-expanded="false"
                 aria-controls="faq-panel-3"
-                id="faq-question-3"
-              >
-                Что делать, если объявление оказалось недостоверным?
+                id="faq-question-3" data-i18n="faq.q3">
+                What if a listing turns out to be inaccurate?
               </button>
 
               <div
@@ -535,9 +528,8 @@
                 aria-labelledby="faq-question-3"
                 hidden
               >
-                <p class="faq__answer-text">
-                  Мы мгновенно блокируем такое объявление, возвращаем вам деньги
-                  (если есть оплата) и подбираем альтернативу.
+                <p class="faq__answer-text" data-i18n="faq.a3">
+                  We block the listing immediately, refund your money (if you paid) and find an alternative.
                 </p>
               </div>
             </article>
@@ -550,8 +542,8 @@
       <div class="container footer__inner">
         <!-- BRAND -->
         <div class="footer__brand">
-          <h2 id="footer-title" class="u-visually-hidden">
-            Информация о RentKit
+          <h2 id="footer-title" class="u-visually-hidden" data-i18n="footer.title">
+            About RentKit
           </h2>
 
           <a href="index.html" class="footer__logo">
@@ -564,26 +556,25 @@
             />
           </a>
 
-          <p class="footer__description">
-            Аренда квартир, домов и апартаментов с честными фотографиями и
-            реальными видами из окон.
+          <p class="footer__description" data-i18n="footer.description">
+            Apartments, houses and studios for rent with honest photos and real window views.
           </p>
         </div>
 
         <!-- NAVIGATION -->
-        <nav class="footer__nav" aria-label="Навигация по сайту">
-          <h3 class="footer__nav-title">Разделы</h3>
+        <nav class="footer__nav" aria-label="Site navigation" data-i18n-attr="aria-label: nav.footerLabel">
+          <h3 class="footer__nav-title" data-i18n="footer.sections">Sections</h3>
           <ul class="footer__menu">
-            <li><a class="footer__menu-link" href="#catalog">Каталог</a></li>
-            <li><a class="footer__menu-link" href="#benefits">Почему мы</a></li>
-            <li><a class="footer__menu-link" href="#faq">FAQ</a></li>
-            <li><a class="footer__menu-link" href="#hero">Поиск</a></li>
+            <li><a class="footer__menu-link" href="#catalog" data-i18n="nav.catalog">Catalog</a></li>
+            <li><a class="footer__menu-link" href="#benefits" data-i18n="nav.benefits">Why us</a></li>
+            <li><a class="footer__menu-link" href="#faq" data-i18n="nav.faq">FAQ</a></li>
+            <li><a class="footer__menu-link" href="#hero" data-i18n="nav.search">Search</a></li>
           </ul>
         </nav>
 
         <!-- CONTACTS -->
         <div class="footer__contacts">
-          <h3 class="footer__nav-title">Контакты</h3>
+          <h3 class="footer__nav-title" data-i18n="footer.contacts">Contacts</h3>
 
           <ul class="footer__contact-list">
             <li>
@@ -632,12 +623,12 @@
 
       <div class="footer__bottom">
         <div class="container footer__bottom-inner">
-          <p class="footer__copy">© <span data-year></span> RentKit. Все права защищены.</p>
+          <p class="footer__copy">© <span data-year></span> RentKit. <span data-i18n="footer.rights">All rights reserved.</span></p>
         </div>
       </div>
     </footer>
 
-    <button class="back-to-top" data-back-to-top aria-label="Вернуться наверх">
+    <button class="back-to-top" data-back-to-top aria-label="Back to top" data-i18n-attr="aria-label: backToTop">
       ↑
     </button>
 
@@ -653,11 +644,11 @@
 
       <div class="filters-modal__panel">
         <header class="filters-modal__header">
-          <h2 class="filters-modal__title" id="filters-title">Фильтры</h2>
+          <h2 class="filters-modal__title" id="filters-title" data-i18n="filters.title">Filters</h2>
           <button
             class="filters-modal__close"
             data-close-filters
-            aria-label="Закрыть фильтры"
+            aria-label="Close filters" data-i18n-attr="aria-label: filters.close"
           >
             ✕
           </button>
@@ -674,17 +665,17 @@
                   <input type="hidden" name="city" value="" />
 
                   <button type="button" class="filter-pill" data-filter-trigger>
-                    <span class="filter-label">Город</span>
-                    <span class="filter-value" data-filter-value>Любой</span>
+                    <span class="filter-label" data-i18n="filter.city">City</span>
+                    <span class="filter-value" data-filter-value data-i18n="filter.anyCity">Any</span>
                   </button>
 
                   <div class="filter-popover" data-filter-popover>
                     <ul class="filter-list">
-                      <li class="filter-list__item" data-value="">Любой</li>
-                      <li class="filter-list__item" data-value="Киев">Киев</li>
-                      <li class="filter-list__item" data-value="Львов">Львов</li>
-                      <li class="filter-list__item" data-value="Одесса">
-                        Одесса
+                      <li class="filter-list__item" data-value="" data-i18n="filter.anyCity">Any</li>
+                      <li class="filter-list__item" data-value="Киев" data-i18n="city.kyiv">Kyiv</li>
+                      <li class="filter-list__item" data-value="Львов" data-i18n="city.lviv">Lviv</li>
+                      <li class="filter-list__item" data-value="Одесса" data-i18n="city.odesa">
+                        Odesa
                       </li>
                     </ul>
                   </div>
@@ -694,20 +685,20 @@
                   <input type="hidden" name="priceMin" value="" />
                   <input type="hidden" name="priceMax" value="" />
                   <button type="button" class="filter-pill" data-filter-trigger>
-                    <span class="filter-label">Цена</span>
-                    <span class="filter-value" data-filter-value>Любой</span>
+                    <span class="filter-label" data-i18n="filter.price">Price</span>
+                    <span class="filter-value" data-filter-value data-i18n="filter.any">Any</span>
                   </button>
                   <div class="filter-popover" data-filter-popover>
                     <ul class="filter-list">
-                      <li class="filter-list__item" data-value="">Любой</li>
-                      <li class="filter-list__item" data-value="20000">
-                        До 20 000 ₴
+                      <li class="filter-list__item" data-value="" data-i18n="filter.any">Any</li>
+                      <li class="filter-list__item" data-value="20000" data-i18n="price.upTo20">
+                        Up to 20,000 ₴
                       </li>
-                      <li class="filter-list__item" data-value="40000">
-                        До 40 000 ₴
+                      <li class="filter-list__item" data-value="40000" data-i18n="price.upTo40">
+                        Up to 40,000 ₴
                       </li>
-                      <li class="filter-list__item" data-value="40000+">
-                        более 40 000 ₴
+                      <li class="filter-list__item" data-value="40000+" data-i18n="price.over40">
+                        Over 40,000 ₴
                       </li>
                     </ul>
                   </div>
@@ -716,17 +707,17 @@
                 <div class="filter" data-filter="rooms">
                   <input type="hidden" name="rooms" value="" />
                   <button type="button" class="filter-pill" data-filter-trigger>
-                    <span class="filter-label">Комнаты</span>
-                    <span class="filter-value" data-filter-value>Любые</span>
+                    <span class="filter-label" data-i18n="filter.rooms">Rooms</span>
+                    <span class="filter-value" data-filter-value data-i18n="filter.anyRooms">Any</span>
                   </button>
                   <div class="filter-popover" data-filter-popover>
                     <ul class="filter-list">
-                      <li class="filter-list__item" data-value="">Любой</li>
-                      <li class="filter-list__item" data-value="1">1 комната</li>
-                      <li class="filter-list__item" data-value="2">2 комнаты</li>
-                      <li class="filter-list__item" data-value="3">3 комнаты</li>
-                      <li class="filter-list__item" data-value="4+">
-                        4+ комнаты
+                      <li class="filter-list__item" data-value="" data-i18n="filter.anyRooms">Any</li>
+                      <li class="filter-list__item" data-value="1" data-i18n="rooms.1">1 room</li>
+                      <li class="filter-list__item" data-value="2" data-i18n="rooms.2">2 rooms</li>
+                      <li class="filter-list__item" data-value="3" data-i18n="rooms.3">3 rooms</li>
+                      <li class="filter-list__item" data-value="4+" data-i18n="rooms.4plus">
+                        4+ rooms
                       </li>
                     </ul>
                   </div>
@@ -738,20 +729,20 @@
                   <input type="checkbox" name="type" value="house" hidden />
 
                   <button type="button" class="filter-pill" data-filter-trigger>
-                    <span class="filter-label">Тип</span>
-                    <span class="filter-value" data-filter-value>Любой</span>
+                    <span class="filter-label" data-i18n="filter.type">Type</span>
+                    <span class="filter-value" data-filter-value data-i18n="filter.any">Any</span>
                   </button>
 
                   <div class="filter-popover">
                     <div class="filter-chips" data-filter-chips>
-                      <button type="button" class="chip" data-value="apartment">
-                        Квартира
+                      <button type="button" class="chip" data-value="apartment" data-i18n="type.apartment">
+                        Apartment
                       </button>
-                      <button type="button" class="chip" data-value="studio">
-                        Студия
+                      <button type="button" class="chip" data-value="studio" data-i18n="type.studio">
+                        Studio
                       </button>
-                      <button type="button" class="chip" data-value="house">
-                        Дом
+                      <button type="button" class="chip" data-value="house" data-i18n="type.house">
+                        House
                       </button>
                     </div>
                   </div>
@@ -763,9 +754,8 @@
                   <button
                     type="button"
                     class="filter-pill filter-pill--toggle"
-                    data-toggle-pill
-                  >
-                    Только доступные
+                    data-toggle-pill data-i18n="filter.onlyAvailable">
+                    Available only
                   </button>
                 </div>
               </div>
@@ -774,9 +764,9 @@
         </div>
 
         <footer class="filters-modal__footer">
-          <button class="filters-reset filters-modal__reset">Сбросить</button>
-          <button class="filters-apply" data-apply-filters>
-            Показать варианты
+          <button class="filters-reset filters-modal__reset" data-i18n="filters.reset">Reset</button>
+          <button class="filters-apply" data-apply-filters data-i18n="filters.apply">
+            Show results
           </button>
         </footer>
       </div>

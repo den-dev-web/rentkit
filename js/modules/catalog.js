@@ -1,5 +1,6 @@
 import { RENTKIT_PROPERTIES } from "../data/properties.js";
 import { observeCard } from "./reveal.js";
+import { t, tPlural, formatNumber, localize } from "./i18n.js";
 
 export default function initCatalog() {
   const skeletonGrid = document.querySelector("[data-skeleton-grid]");
@@ -238,7 +239,7 @@ export default function initCatalog() {
       ? getMatchedFilterValue(cityFilter, filters.city)
       : "";
     if (cityInput) cityInput.value = cityValue;
-    setFilterLabelFromValue(cityFilter, cityValue, "Любой");
+    setFilterLabelFromValue(cityFilter, cityValue, t("filter.anyCity"));
 
     const priceFilter = filtersForm.querySelector("[data-filter='price']");
     const minInput = priceFilter?.querySelector('input[name="priceMin"]');
@@ -260,17 +261,21 @@ export default function initCatalog() {
     } else if (filters.priceMin === null && filters.priceMax !== null) {
       priceToken = String(filters.priceMax);
     }
-    setFilterLabelFromValue(priceFilter, priceToken, "Любой");
+    setFilterLabelFromValue(priceFilter, priceToken, t("filter.any"));
 
     const roomsFilter = filtersForm.querySelector("[data-filter='rooms']");
     const roomsInput = roomsFilter?.querySelector('input[name="rooms"]');
     if (roomsInput) roomsInput.value = filters.rooms || "";
-    setFilterLabelFromValue(roomsFilter, filters.rooms || "", "Любые");
+    setFilterLabelFromValue(roomsFilter, filters.rooms || "", t("filter.anyRooms"));
 
     const sortFilter = document.querySelector("[data-filter='sorting']");
     const sortInput = filtersForm.querySelector('input[name="sort"]');
     if (sortInput) sortInput.value = filters.sort || "date-desc";
-    setFilterLabelFromValue(sortFilter, filters.sort || "date-desc", "Новые");
+    setFilterLabelFromValue(
+      sortFilter,
+      filters.sort || "date-desc",
+      t("sort.newest"),
+    );
 
     const typeFilter = filtersForm.querySelector("[data-filter='type']");
     const typePopover = getFilterPopover(typeFilter);
@@ -296,7 +301,7 @@ export default function initCatalog() {
       );
       valueEl.textContent = activeChips.length
         ? activeChips.map((c) => c.textContent).join(" · ")
-        : "Любой";
+        : t("filter.any");
     }
 
     const availableFilter = filtersForm.querySelector(
@@ -415,14 +420,14 @@ export default function initCatalog() {
           <div class="property-card__badges">
             ${
               item.isPremium
-                ? '<span class="badge badge--premium">Премиум</span>'
+                ? `<span class="badge badge--premium">${t("badge.premium")}</span>`
                 : ""
             }
-            ${item.isNew ? '<span class="badge badge--new">Новое</span>' : ""}
+            ${item.isNew ? `<span class="badge badge--new">${t("badge.new")}</span>` : ""}
           </div>
           <div class="property-card__status-badge">
             <span class="badge badge--status badge--status-${item.status}">
-              ${item.status === "available" ? "Доступно" : "Занято"}
+              ${item.status === "available" ? t("status.available") : t("status.busy")}
             </span>
           </div>
         </div>
@@ -433,20 +438,20 @@ export default function initCatalog() {
           <p class="property-card__location">${item.city}, ${item.address}</p>
 
           <div class="property-card__info">
-            <span>${item.rooms} комн.</span>
-            <span>${item.area} м²</span>
-            <span>${item.floor} этаж</span>
+            <span>${tPlural("card.rooms", item.rooms)}</span>
+            <span>${t("card.area", { area: item.area })}</span>
+            <span>${t("card.floor", { floor: item.floor })}</span>
           </div>
 
           <div class="property-card__bottom">
             <div class="property-card__price-block">
               <span class="property-card__price">
-                ${item.price.toLocaleString("ru-RU")} ₴ / мес
+                ${t("card.pricePerMonth", { price: formatNumber(item.price) })}
               </span>
             </div>
             <a class="property-card__cta" href="property.html?id=${
               item.id
-            }">Подробнее</a>
+            }">${t("card.more")}</a>
           </div>
         </div>
       `;
@@ -637,7 +642,7 @@ export default function initCatalog() {
         );
         valueEl.textContent = activeChips.length
           ? activeChips.map((c) => c.textContent).join(" · ")
-          : "Любой";
+          : t("filter.any");
       });
     });
   });
@@ -684,13 +689,14 @@ export default function initCatalog() {
         .querySelectorAll(".filter-pill--toggle")
         .forEach((b) => b.classList.remove("filter-pill--active"));
 
+      // Исходный data-i18n ключ значения — это его текст по умолчанию
       filtersForm
         .querySelectorAll("[data-filter-value]")
-        .forEach((el) => (el.textContent = "Любой"));
+        .forEach((el) => (el.textContent = t(el.dataset.i18n)));
 
       if (sortInput) sortInput.value = sortValue;
       const sortFilter = document.querySelector("[data-filter='sorting']");
-      setFilterLabelFromValue(sortFilter, sortValue, "Новые");
+      setFilterLabelFromValue(sortFilter, sortValue, t("sort.newest"));
 
       appliedFilters = getFiltersFromForm();
       renderActiveChips(appliedFilters);
@@ -801,20 +807,20 @@ export default function initCatalog() {
 
     if (data.city) chips.push({ key: "city", label: data.city });
     if (data.priceMin !== null || data.priceMax !== null) {
-      let label = "Цена";
-      if (data.priceMin !== null && data.priceMax !== null) {
-        label = `До ${data.priceMax} ₴`;
-      } else if (data.priceMin !== null && data.priceMax === null) {
-        label = `Более ${data.priceMin} ₴`;
-      } else if (data.priceMin === null && data.priceMax !== null) {
-        label = `До ${data.priceMax} ₴`;
+      let label = t("filter.price");
+      if (data.priceMax !== null) {
+        label = t("chip.priceUpTo", { price: formatNumber(data.priceMax) });
+      } else if (data.priceMin !== null) {
+        label = t("chip.priceFrom", { price: formatNumber(data.priceMin) });
       }
       chips.push({ key: "price", label });
     }
     if (data.rooms) {
       const roomsFilter = filtersForm?.querySelector("[data-filter='rooms']");
       const option = findFilterOption(roomsFilter, data.rooms);
-      const label = option ? option.textContent : `${data.rooms} комн.`;
+      const label = option
+        ? option.textContent
+        : tPlural("card.rooms", Number(data.rooms));
       chips.push({ key: "rooms", label });
     }
     if (data.types.length) {
@@ -826,7 +832,7 @@ export default function initCatalog() {
       chips.push({ key: "type", label: typeLabels.join(" · ") });
     }
     if (data.onlyAvailable)
-      chips.push({ key: "available", label: "Только доступные" });
+      chips.push({ key: "available", label: t("filter.onlyAvailable") });
 
     chips.forEach((chip) => {
       const el = document.createElement("button");
@@ -873,7 +879,7 @@ export default function initCatalog() {
     const cityFilter = filtersForm.querySelector("[data-filter='city']");
     const cityInput = cityFilter?.querySelector("input[name='city']");
     if (cityInput) cityInput.value = heroCity;
-    setFilterLabelFromValue(cityFilter, heroCity, "Любой");
+    setFilterLabelFromValue(cityFilter, heroCity, t("filter.anyCity"));
 
     const priceFilter = filtersForm.querySelector("[data-filter='price']");
     const minInput = priceFilter?.querySelector('input[name="priceMin"]');
@@ -888,7 +894,7 @@ export default function initCatalog() {
     } else if (heroBudget === "40000+") {
       if (minInput) minInput.value = "40000";
     }
-    setFilterLabelFromValue(priceFilter, heroBudget, "Любой");
+    setFilterLabelFromValue(priceFilter, heroBudget, t("filter.any"));
 
     appliedFilters = getFiltersFromForm();
     renderActiveChips(appliedFilters);
