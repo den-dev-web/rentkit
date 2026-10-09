@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>RentKit — аренда квартир, домов и апартаментов</title>
+    <title data-i18n="meta.title">RentKit — apartments, houses and studios for rent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="assets/icons/rentkit-favicon.png" />
     <meta
       name="description"
-      content="Подробности объекта на RentKit: фото, характеристики, календарь доступности и отзывы гостей."
+      content="Property details on RentKit: photos, specifications, availability calendar and guest reviews." data-i18n-attr="content: meta.propertyDescription"
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="RentKit" />
-    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:locale" content="en_US" />
     <meta
       property="og:title"
-      content="RentKit — аренда квартир, домов и апартаментов"
+      content="RentKit — apartments, houses and studios for rent" data-i18n-attr="content: meta.title"
     />
     <meta
       property="og:description"
-      content="Подробности объекта на RentKit: фото, характеристики, календарь доступности и отзывы гостей."
+      content="Property details on RentKit: photos, specifications, availability calendar and guest reviews." data-i18n-attr="content: meta.propertyDescription"
     />
     <meta
       property="og:url"
@@ -67,15 +67,15 @@
         </a>
 
         <!-- ДЕСКТОП-НАВИГАЦИЯ -->
-        <nav class="header__nav" aria-label="Основная навигация">
+        <nav class="header__nav" aria-label="Main navigation" data-i18n-attr="aria-label: nav.mainLabel">
           <ul class="header__menu">
             <li>
-              <a class="header__link" href="index.html#catalog">Каталог</a>
+              <a class="header__link" href="index.html#catalog" data-i18n="nav.catalog">Catalog</a>
             </li>
             <li>
-              <a class="header__link" href="index.html#benefits">Почему мы</a>
+              <a class="header__link" href="index.html#benefits" data-i18n="nav.benefits">Why us</a>
             </li>
-            <li><a class="header__link" href="index.html#faq">FAQ</a></li>
+            <li><a class="header__link" href="index.html#faq" data-i18n="nav.faq">FAQ</a></li>
           </ul>
         </nav>
 
@@ -113,12 +113,12 @@
           </div>
 
           <!-- CTA -->
-          <a class="header__cta" href="index.html#catalog">Подобрать жильё</a>
+          <a class="header__cta" href="index.html#catalog" data-i18n="cta.findHome">Find a home</a>
 
           <!-- БУРГЕР -->
           <button
             class="header__burger"
-            aria-label="Меню"
+            aria-label="Menu" data-i18n-attr="aria-label: menu.open"
             aria-expanded="false"
             aria-controls="mobile-menu"
             data-burger
@@ -134,18 +134,18 @@
     <nav
       class="mobile-menu"
       id="mobile-menu"
-      aria-label="Мобильная навигация"
+      aria-label="Mobile navigation" data-i18n-attr="aria-label: nav.mobileLabel"
       aria-hidden="true"
       data-mobile-menu
     >
       <div class="mobile-menu__backdrop" data-mobile-backdrop></div>
       <div class="mobile-menu__panel" data-mobile-panel>
         <div class="mobile-menu__header">
-          <span class="mobile-menu__title">Меню</span>
+          <span class="mobile-menu__title" data-i18n="menu.title">Menu</span>
           <button
             class="mobile-menu__close"
             type="button"
-            aria-label="Закрыть меню"
+            aria-label="Close menu" data-i18n-attr="aria-label: menu.close"
             data-mobile-close
           >
             ✕
@@ -153,18 +153,16 @@
         </div>
         <ul class="mobile-menu__list">
           <li>
-            <a class="mobile-menu__link" href="index.html#catalog">Каталог</a>
+            <a class="mobile-menu__link" href="index.html#catalog" data-i18n="nav.catalog">Catalog</a>
           </li>
           <li>
-            <a class="mobile-menu__link" href="index.html#benefits"
-              >Почему мы</a
+            <a class="mobile-menu__link" href="index.html#benefits" data-i18n="nav.benefits">Why us</a
             >
           </li>
-          <li><a class="mobile-menu__link" href="index.html#faq">FAQ</a></li>
+          <li><a class="mobile-menu__link" href="index.html#faq" data-i18n="nav.faq">FAQ</a></li>
         </ul>
 
-        <a class="mobile-menu__cta" href="index.html#catalog"
-          >Подобрать жильё</a
+        <a class="mobile-menu__cta" href="index.html#catalog" data-i18n="cta.findHome">Find a home</a
         >
       </div>
     </nav>
@@ -174,15 +172,14 @@
         class="container property-not-found u-hidden"
         data-property-not-found
       >
-        <h2 class="property-not-found__title">Объект не найден</h2>
-        <p class="property-not-found__text">
-          Возможно, объявление снято с публикации или ссылка устарела.
+        <h2 class="property-not-found__title" data-i18n="notFound.title">Property not found</h2>
+        <p class="property-not-found__text" data-i18n="notFound.text">
+          The listing may have been removed or the link is outdated.
         </p>
         <a
           class="sidebar-btn property-not-found__link"
-          href="index.html#catalog"
-        >
-          Перейти в каталог
+          href="index.html#catalog" data-i18n="notFound.link">
+          Go to catalog
         </a>
       </section>
 
@@ -197,14 +194,14 @@
           <button
             class="gallery-btn gallery-btn--prev"
             data-gallery-prev
-            aria-label="Предыдущее фото"
+            aria-label="Previous photo" data-i18n-attr="aria-label: gallery.prev"
           >
             ‹
           </button>
           <button
             class="gallery-btn gallery-btn--next"
             data-gallery-next
-            aria-label="Следующее фото"
+            aria-label="Next photo" data-i18n-attr="aria-label: gallery.next"
           >
             ›
           </button>
@@ -221,7 +218,7 @@
             data-property-map
             src=""
             loading="lazy"
-            title="Карта расположения объекта"
+            title="Property location map" data-i18n-attr="title: map.title"
           ></iframe>
         </div>
       </section>
@@ -234,42 +231,42 @@
           <!-- Заголовок + метаданные -->
           <section class="property-section">
             <h1 class="property-title" data-property-title>
-              Современная студия с панорамными окнами
+              Modern studio with panoramic windows
             </h1>
 
             <p class="property-meta" data-property-meta>
-              Киев, Печерск — ул. Предславинская, 32
+              Kyiv, Pechersk — 32 Predslavynska St
             </p>
             <div class="property-badges" data-property-badges></div>
           </section>
 
           <!-- Характеристики -->
           <section class="property-section">
-            <h2 class="section-title">Характеристики</h2>
+            <h2 class="section-title" data-i18n="section.specs">Specifications</h2>
 
             <ul class="property-specs" data-property-specs></ul>
           </section>
 
           <!-- Описание -->
           <section class="property-section">
-            <h2 class="section-title">Описание</h2>
+            <h2 class="section-title" data-i18n="section.description">Description</h2>
             <p class="property-description" data-property-description>
-              Современная студия с панорамными окнами и дизайнерским ремонтом.
-              Апартаменты находятся в новом жилом комплексе с охраняемой
-              территорией. Квартира полностью укомплектована техникой и мебелью.
+              A modern studio with panoramic windows and a designer renovation.
+              The apartment is in a new residential complex with a guarded
+              area and is fully equipped with appliances and furniture.
             </p>
           </section>
 
           <!-- Преимущества -->
           <section class="property-section">
-            <h2 class="section-title">Преимущества</h2>
+            <h2 class="section-title" data-i18n="section.features">Highlights</h2>
 
             <ul class="property-features" data-property-features></ul>
           </section>
 
           <!-- Галерея блока -->
           <section class="property-section">
-            <h2 class="section-title">Дополнительные фото</h2>
+            <h2 class="section-title" data-i18n="section.gallery">More photos</h2>
 
             <div class="property-grid-gallery" data-property-gallery></div>
           </section>
@@ -279,14 +276,14 @@
             <img
               src="assets/images/host/rk-000002_host.jpg"
               class="property-host__avatar"
-              alt="Александра, хозяйка"
+              alt="Oleksandra, host"
               width="128"
               height="128"
               data-property-host-avatar
             />
             <div>
-              <h3 data-property-host-name>Александра, хозяйка</h3>
-              <p data-property-host-meta>8 лет опыта, рейтинг 4.9, 52 отзыва</p>
+              <h3 data-property-host-name>Oleksandra, host</h3>
+              <p data-property-host-meta>8 years of experience, rating 4.9, 52 reviews</p>
             </div>
           </section>
         </div>
@@ -296,17 +293,16 @@
          =========================== -->
         <aside class="property-sidebar" data-sticky-sidebar>
           <div class="property-sidebar__card">
-            <p class="sidebar-price" data-property-price>38 000 ₴ / месяц</p>
+            <p class="sidebar-price" data-property-price>38,000 ₴ / month</p>
 
             <p
               class="sidebar-status sidebar-status--available"
-              data-property-status
-            >
-              Доступно сейчас
+              data-property-status data-i18n="status.availableNow">
+              Available now
             </p>
 
-            <button type="button" class="sidebar-btn" data-contact-open>
-              Связаться с хозяином
+            <button type="button" class="sidebar-btn" data-contact-open data-i18n="contact.open">
+              Contact the owner
             </button>
 
             <div class="sidebar-meta" data-property-sidebar-notes></div>
@@ -314,15 +310,15 @@
             <section class="property-section property-calendar">
               <div class="calendar calendar--mini" id="calendar-mini"></div>
               <div class="calendar-legend">
-                <span class="calendar-legend__item calendar-legend__item--free">
-                  Свободно
+                <span class="calendar-legend__item calendar-legend__item--free" data-i18n="calendar.free">
+                  Available
                 </span>
-                <span class="calendar-legend__item calendar-legend__item--busy">
-                  Занято
+                <span class="calendar-legend__item calendar-legend__item--busy" data-i18n="status.busy">
+                  Booked
                 </span>
               </div>
-              <button class="calendar-open" data-calendar-open>
-                Смотреть 3 месяца
+              <button class="calendar-open" data-calendar-open data-i18n="calendar.open">
+                View 3 months
               </button>
             </section>
           </div>
@@ -331,19 +327,19 @@
 
       <div class="container">
         <section class="property-section property-reviews" id="reviews">
-          <h2 class="section-title">Отзывы гостей</h2>
+          <h2 class="section-title" data-i18n="section.reviews">Guest reviews</h2>
 
           <div class="reviews-summary">
             <div class="reviews-summary__rating" data-reviews-rating>4.9</div>
             <div>
               <div class="reviews-summary__stars" data-reviews-stars>★★★★★</div>
-              <p class="reviews-summary__count" data-reviews-count>52 отзыва</p>
+              <p class="reviews-summary__count" data-reviews-count>52 reviews</p>
             </div>
           </div>
 
           <div class="reviews-list" data-reviews-list></div>
 
-          <button class="reviews-more" data-reviews-more>Показать ещё</button>
+          <button class="reviews-more" data-reviews-more data-i18n="common.showMore">Show more</button>
         </section>
       </div>
     </main>
@@ -352,8 +348,8 @@
       <div class="container footer__inner">
         <!-- BRAND -->
         <div class="footer__brand">
-          <h2 id="footer-title" class="u-visually-hidden">
-            Информация о RentKit
+          <h2 id="footer-title" class="u-visually-hidden" data-i18n="footer.title">
+            About RentKit
           </h2>
 
           <a href="index.html" class="footer__logo">
@@ -366,34 +362,33 @@
             />
           </a>
 
-          <p class="footer__description">
-            Аренда квартир, домов и апартаментов с честными фотографиями и
-            реальными видами из окон.
+          <p class="footer__description" data-i18n="footer.description">
+            Apartments, houses and studios for rent with honest photos and real window views.
           </p>
         </div>
 
         <!-- NAVIGATION -->
-        <nav class="footer__nav" aria-label="Навигация по сайту">
-          <h3 class="footer__nav-title">Разделы</h3>
+        <nav class="footer__nav" aria-label="Site navigation" data-i18n-attr="aria-label: nav.footerLabel">
+          <h3 class="footer__nav-title" data-i18n="footer.sections">Sections</h3>
           <ul class="footer__menu">
             <li>
-              <a class="footer__menu-link" href="index.html#catalog">Каталог</a>
+              <a class="footer__menu-link" href="index.html#catalog" data-i18n="nav.catalog">Catalog</a>
             </li>
             <li>
-              <a class="footer__menu-link" href="index.html#benefits">
-                Почему мы
+              <a class="footer__menu-link" href="index.html#benefits" data-i18n="nav.benefits">
+                Why us
               </a>
             </li>
-            <li><a class="footer__menu-link" href="index.html#faq">FAQ</a></li>
+            <li><a class="footer__menu-link" href="index.html#faq" data-i18n="nav.faq">FAQ</a></li>
             <li>
-              <a class="footer__menu-link" href="index.html#hero">Поиск</a>
+              <a class="footer__menu-link" href="index.html#hero" data-i18n="nav.search">Search</a>
             </li>
           </ul>
         </nav>
 
         <!-- CONTACTS -->
         <div class="footer__contacts">
-          <h3 class="footer__nav-title">Контакты</h3>
+          <h3 class="footer__nav-title" data-i18n="footer.contacts">Contacts</h3>
 
           <ul class="footer__contact-list">
             <li>
@@ -443,13 +438,13 @@
       <div class="footer__bottom">
         <div class="container footer__bottom-inner">
           <p class="footer__copy">
-            © <span data-year></span> RentKit. Все права защищены.
+            © <span data-year></span> RentKit. <span data-i18n="footer.rights">All rights reserved.</span>
           </p>
         </div>
       </div>
     </footer>
 
-    <button class="back-to-top" data-back-to-top aria-label="Вернуться наверх">
+    <button class="back-to-top" data-back-to-top aria-label="Back to top" data-i18n-attr="aria-label: backToTop">
       ↑
     </button>
 
@@ -466,14 +461,14 @@
         <button
           class="calendar-modal__close"
           data-calendar-close
-          aria-label="Закрыть"
+          aria-label="Close" data-i18n-attr="aria-label: common.close"
         >
           ×
         </button>
-        <h3 id="calendar-title" class="calendar-modal__title">
-          Календарь доступности
+        <h3 id="calendar-title" class="calendar-modal__title" data-i18n="calendar.title">
+          Availability calendar
         </h3>
-        <p class="calendar-modal__subtitle">Текущий и 2 следующих месяца</p>
+        <p class="calendar-modal__subtitle" data-i18n="calendar.subtitle">Current and next 2 months</p>
         <div class="calendar-grid" data-calendar-grid></div>
       </div>
     </div>
@@ -492,21 +487,21 @@
           type="button"
           class="contact-modal__close"
           data-contact-close
-          aria-label="Закрыть"
+          aria-label="Close" data-i18n-attr="aria-label: common.close"
         >
           ×
         </button>
-        <h2 id="contact-title" class="contact-modal__title">
-          Связаться с хозяином
+        <h2 id="contact-title" class="contact-modal__title" data-i18n="contact.open">
+          Contact the owner
         </h2>
 
         <form class="contact-form" data-contact-form novalidate>
-          <p class="contact-modal__subtitle">
-            Оставьте контакты — хозяин перезвонит в течение дня.
+          <p class="contact-modal__subtitle" data-i18n="contact.subtitle">
+            Leave your contacts — the owner will call you back within a day.
           </p>
 
           <div class="contact-form__field">
-            <label class="contact-form__label" for="contact-name">Имя</label>
+            <label class="contact-form__label" for="contact-name" data-i18n="contact.name">Name</label>
             <input
               class="contact-form__input"
               id="contact-name"
@@ -520,15 +515,14 @@
               class="contact-form__error"
               id="contact-name-error"
               data-error-for="name"
-              hidden
-            >
-              Введите имя
+              hidden data-i18n="contact.nameError">
+              Enter your name
             </p>
           </div>
 
           <div class="contact-form__field">
-            <label class="contact-form__label" for="contact-phone">
-              Телефон
+            <label class="contact-form__label" for="contact-phone" data-i18n="contact.phone">
+              Phone
             </label>
             <input
               class="contact-form__input"
@@ -544,15 +538,14 @@
               class="contact-form__error"
               id="contact-phone-error"
               data-error-for="phone"
-              hidden
-            >
-              Введите номер телефона (не менее 10 цифр)
+              hidden data-i18n="contact.phoneError">
+              Enter a phone number (at least 10 digits)
             </p>
           </div>
 
           <div class="contact-form__field">
-            <label class="contact-form__label" for="contact-message">
-              Сообщение
+            <label class="contact-form__label" for="contact-message" data-i18n="contact.message">
+              Message
             </label>
             <textarea
               class="contact-form__input contact-form__input--textarea"
@@ -562,22 +555,21 @@
             ></textarea>
           </div>
 
-          <button type="submit" class="sidebar-btn contact-form__submit">
-            Отправить заявку
+          <button type="submit" class="sidebar-btn contact-form__submit" data-i18n="contact.submit">
+            Send request
           </button>
         </form>
 
         <div class="contact-modal__success" data-contact-success hidden>
-          <p class="contact-modal__success-title">Заявка отправлена</p>
-          <p class="contact-modal__subtitle">
-            Спасибо! Хозяин свяжется с вами в ближайшее время.
+          <p class="contact-modal__success-title" data-i18n="contact.successTitle">Request sent</p>
+          <p class="contact-modal__subtitle" data-i18n="contact.successText">
+            Thank you! The owner will contact you shortly.
           </p>
           <button
             type="button"
             class="sidebar-btn contact-form__submit"
-            data-contact-close
-          >
-            Закрыть
+            data-contact-close data-i18n="common.close">
+            Close
           </button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { RENTKIT_PROPERTIES } from "../data/properties.js";
+import { t, tPlural, formatNumber, locale } from "./i18n.js";
 
 function getPropertyData() {
   const dataSource = RENTKIT_PROPERTIES || [];
@@ -59,12 +60,8 @@ function createPicture(src, alt, { imgClass, pictureClass, eager = false }) {
 }
 
 function formatType(type) {
-  const types = {
-    studio: "Студия",
-    apartment: "Квартира",
-    house: "Дом",
-  };
-  return types[type] || "Жилье";
+  const types = ["studio", "apartment", "house"];
+  return types.includes(type) ? t(`type.${type}`) : t("type.fallback");
 }
 
 function formatStars(rating) {
@@ -126,12 +123,12 @@ function hydratePropertyPage(propertyData) {
     const tags = [];
     if (propertyData.isPremium) {
       tags.push(
-        '<span class="property-badges__tag property-badges__tag--premium">Премиум</span>'
+        `<span class="property-badges__tag property-badges__tag--premium">${t("badge.premium")}</span>`
       );
     }
     if (propertyData.isNew) {
       tags.push(
-        '<span class="property-badges__tag property-badges__tag--new">Новое</span>'
+        `<span class="property-badges__tag property-badges__tag--new">${t("badge.new")}</span>`
       );
     }
     badgesEl.innerHTML = tags.join("");
@@ -142,13 +139,15 @@ function hydratePropertyPage(propertyData) {
   if (specsEl) {
     const specs = [
       {
-        label: "Площадь",
-        value: propertyData.area ? `${propertyData.area} м²` : null,
+        label: t("spec.area"),
+        value: propertyData.area
+          ? t("card.area", { area: propertyData.area })
+          : null,
       },
-      { label: "Этаж", value: propertyData.floor ?? null },
-      { label: "Комнат", value: propertyData.rooms ?? null },
-      { label: "Тип", value: formatType(propertyData.type) },
-      { label: "Вид из окон", value: propertyData.view || null },
+      { label: t("spec.floor"), value: propertyData.floor ?? null },
+      { label: t("spec.rooms"), value: propertyData.rooms ?? null },
+      { label: t("spec.type"), value: formatType(propertyData.type) },
+      { label: t("spec.view"), value: propertyData.view || null },
     ].filter((item) => item.value !== null);
 
     specsEl.innerHTML = "";
@@ -187,7 +186,7 @@ function hydratePropertyPage(propertyData) {
   if (galleryEl) {
     const gallery = normalizeImages(
       propertyData.gallery || propertyData.heroImages || [],
-      "Фото"
+      t("gallery.photo")
     );
     galleryEl.innerHTML = "";
     gallery.forEach((item) => {
@@ -208,7 +207,7 @@ function hydratePropertyPage(propertyData) {
       .join(", ");
     if (hostAvatarEl && propertyData.host.avatar) {
       hostAvatarEl.src = propertyData.host.avatar;
-      hostAvatarEl.alt = hostName || "Хозяин";
+      hostAvatarEl.alt = hostName || t("host.fallback");
     }
     if (hostNameEl && hostName) {
       hostNameEl.textContent = hostName;
@@ -220,15 +219,17 @@ function hydratePropertyPage(propertyData) {
 
   const priceEl = document.querySelector("[data-property-price]");
   if (priceEl && typeof propertyData.price === "number") {
-    priceEl.textContent = `${propertyData.price.toLocaleString(
-      "ru-RU"
-    )} ₴ / месяц`;
+    priceEl.textContent = t("property.pricePerMonth", {
+      price: formatNumber(propertyData.price),
+    });
   }
 
   const statusEl = document.querySelector("[data-property-status]");
   if (statusEl) {
     const isAvailable = propertyData.status === "available";
-    statusEl.textContent = isAvailable ? "Доступно сейчас" : "Занято";
+    statusEl.textContent = isAvailable
+      ? t("status.availableNow")
+      : t("status.busy");
     statusEl.classList.toggle("sidebar-status--available", isAvailable);
   }
 
@@ -262,7 +263,7 @@ function hydratePropertyPage(propertyData) {
     reviewsStarsEl.textContent = formatStars(reviewsSummary.rating);
   }
   if (reviewsCountEl && typeof reviewsSummary.count === "number") {
-    reviewsCountEl.textContent = `${reviewsSummary.count} отзыва`;
+    reviewsCountEl.textContent = tPlural("reviews.count", reviewsSummary.count);
   }
 
   const reviewsListEl = document.querySelector("[data-reviews-list]");
@@ -277,7 +278,7 @@ function hydratePropertyPage(propertyData) {
       article.innerHTML = `
         <img src="${review.avatar || ""}" class="review__avatar" alt="" width="128" height="128" loading="lazy" />
         <div class="review__content">
-          <h3 class="review__author">${review.author || "Гость"}</h3>
+          <h3 class="review__author">${review.author || t("review.guest")}</h3>
           <div class="review__stars">${formatStars(review.rating)}</div>
           <p class="review__text">${review.text || ""}</p>
         </div>
@@ -303,11 +304,11 @@ function renderHeroGallery(propertyData) {
 
   const images = normalizeImages(
     propertyData.heroImages || propertyData.gallery || [],
-    propertyData.title || "Фото"
+    propertyData.title || t("gallery.photo")
   );
   const thumbs = normalizeImages(
     propertyData.thumbs || images.map((item) => item.src),
-    "Миниатюра"
+    t("gallery.thumb")
   );
 
   imagesEl.innerHTML = "";
@@ -333,7 +334,7 @@ function renderHeroGallery(propertyData) {
     const thumb = document.createElement("img");
     thumb.className = "property-hero__thumb";
     thumb.src = item.src || item;
-    thumb.alt = item.alt || `Миниатюра ${index + 1}`;
+    thumb.alt = item.alt || `${t("gallery.thumb")} ${index + 1}`;
     thumb.width = THUMB_WIDTH;
     thumb.height = THUMB_HEIGHT;
     if (index === 0) thumb.classList.add("property-hero__thumb--active");
@@ -426,11 +427,11 @@ function initReviewsToggle() {
   moreBtn.addEventListener("click", () => {
     if (!expanded) {
       list.classList.add("expanded");
-      moreBtn.textContent = "Скрыть";
+      moreBtn.textContent = t("common.hide");
       expanded = true;
     } else {
       list.classList.remove("expanded");
-      moreBtn.textContent = "Показать ещё";
+      moreBtn.textContent = t("common.showMore");
       expanded = false;
     }
   });
@@ -470,21 +471,13 @@ function initCalendar(propertyData) {
     (propertyData.bookedDates || []).map((date) => date)
   );
 
-  const monthNames = [
-    "Январь",
-    "Февраль",
-    "Март",
-    "Апрель",
-    "Май",
-    "Июнь",
-    "Июль",
-    "Август",
-    "Сентябрь",
-    "Октябрь",
-    "Ноябрь",
-    "Декабрь",
-  ];
-  const weekdays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+  const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+  const monthFormatter = new Intl.DateTimeFormat(locale, { month: "long" });
+  const weekdayFormatter = new Intl.DateTimeFormat(locale, { weekday: "short" });
+  // 1 января 2024 — понедельник: берём 7 дней подряд, начиная с него
+  const weekdays = Array.from({ length: 7 }, (_, i) =>
+    capitalize(weekdayFormatter.format(new Date(2024, 0, 1 + i)))
+  );
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -506,7 +499,9 @@ function initCalendar(propertyData) {
 
     const title = document.createElement("div");
     title.className = "calendar-month__title";
-    title.textContent = `${monthNames[month]} ${year}`;
+    title.textContent = `${capitalize(
+      monthFormatter.format(new Date(year, month, 1))
+    )} ${year}`;
 
     const meta = document.createElement("div");
     meta.className = "calendar-month__meta";
