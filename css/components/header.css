@@ -121,10 +121,16 @@
   transition: color var(--transition-fast);
 }
 
-.header__link:hover,
 .header__link:focus-visible {
   color: var(--color-primary);
   outline: none;
+}
+
+@media (hover: hover) {
+  .header__link:hover {
+    color: var(--color-primary);
+    outline: none;
+  }
 }
 
 /* CTA */
@@ -146,9 +152,11 @@
       background-color var(--transition-fast);
   }
 
-  .header__cta:hover {
-    background: var(--color-primary-strong);
-    transform: translateY(-2px);
+  @media (hover: hover) {
+    .header__cta:hover {
+      background: var(--color-primary-strong);
+      transform: translateY(-2px);
+    }
   }
 
   .header__cta:focus-visible {
@@ -296,10 +304,12 @@ body.is-menu-open .mobile-menu {
     border-color var(--transition-fast);
 }
 
-.mobile-menu__close:hover {
-  transform: translateY(-1px);
-  background: rgba(226, 232, 240, 0.9);
-  border-color: rgba(148, 163, 184, 0.9);
+@media (hover: hover) {
+  .mobile-menu__close:hover {
+    transform: translateY(-1px);
+    background: rgba(226, 232, 240, 0.9);
+    border-color: rgba(148, 163, 184, 0.9);
+  }
 }
 
 .mobile-menu__close:focus-visible {
@@ -326,10 +336,16 @@ body.is-menu-open .mobile-menu__panel {
   transition: color var(--transition-fast);
 }
 
-.mobile-menu__link:hover,
 .mobile-menu__link:focus-visible {
   color: var(--color-primary);
   outline: none;
+}
+
+@media (hover: hover) {
+  .mobile-menu__link:hover {
+    color: var(--color-primary);
+    outline: none;
+  }
 }
 
 /* CTA в мобайле */
@@ -350,9 +366,11 @@ body.is-menu-open .mobile-menu__panel {
     transform var(--transition-fast);
 }
 
-.mobile-menu__cta:hover {
-  background: var(--color-primary-strong);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .mobile-menu__cta:hover {
+    background: var(--color-primary-strong);
+    transform: translateY(-2px);
+  }
 }
 
 .mobile-menu__cta:focus-visible {

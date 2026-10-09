@@ -81,11 +81,18 @@
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
-.footer__menu-link:hover,
 .footer__menu-link:focus-visible {
   color: var(--color-primary);
   transform: translateX(3px);
   outline: none;
+}
+
+@media (hover: hover) {
+  .footer__menu-link:hover {
+    color: var(--color-primary);
+    transform: translateX(3px);
+    outline: none;
+  }
 }
 
 /* CONTACTS */
@@ -104,10 +111,16 @@
   transition: color var(--transition-fast);
 }
 
-.footer__contact:hover,
 .footer__contact:focus-visible {
   color: var(--color-primary);
   outline: none;
+}
+
+@media (hover: hover) {
+  .footer__contact:hover {
+    color: var(--color-primary);
+    outline: none;
+  }
 }
 
 /* SOCIAL */
@@ -128,11 +141,18 @@
     background-color var(--transition-fast);
 }
 
-.footer__social-link:hover,
 .footer__social-link:focus-visible {
   transform: translateY(-3px);
   background-color: var(--color-primary);
   outline: none;
+}
+
+@media (hover: hover) {
+  .footer__social-link:hover {
+    transform: translateY(-3px);
+    background-color: var(--color-primary);
+    outline: none;
+  }
 }
 
 /* BOTTOM STRIP */
@@ -195,10 +215,16 @@
   transition: background-color var(--transition-fast);
 }
 
-.sticky-cta__btn:hover,
 .sticky-cta__btn:focus-visible {
   background: var(--color-primary-strong);
   outline: none;
+}
+
+@media (hover: hover) {
+  .sticky-cta__btn:hover {
+    background: var(--color-primary-strong);
+    outline: none;
+  }
 }
 
 /* Desktop отключаем */

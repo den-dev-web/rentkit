@@ -41,9 +41,11 @@
     box-shadow var(--transition-fast);
 }
 
-.catalog__load-more:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 18px 38px rgba(37, 99, 235, 0.28);
+@media (hover: hover) {
+  .catalog__load-more:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 38px rgba(37, 99, 235, 0.28);
+  }
 }
 
 .catalog__load-more:focus-visible {
@@ -241,14 +243,18 @@
   outline-offset: 2px;
 }
 
-.property-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14),
-    0 20px 48px rgba(15, 23, 42, 0.22);
+@media (hover: hover) {
+  .property-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14),
+      0 20px 48px rgba(15, 23, 42, 0.22);
+  }
 }
 
-.property-card:hover .property-card__button {
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .property-card:hover .property-card__button {
+    transform: translateY(-1px);
+  }
 }
 
 .property-card__bottom {
@@ -280,8 +286,10 @@
   transition: background 0.2s ease;
 }
 
-.property-card__cta:hover {
-  background: var(--color-primary-strong);
+@media (hover: hover) {
+  .property-card__cta:hover {
+    background: var(--color-primary-strong);
+  }
 }
 
 /* Сетка каталога */

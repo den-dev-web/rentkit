@@ -69,7 +69,13 @@
     rgba(255, 255, 255, 0) 80%
   );
   transform: translateX(-100%);
-  animation: rentkit-skeleton-shimmer 1.4s infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton-box::before,
+  .skeleton-line::before {
+    animation: rentkit-skeleton-shimmer 1.4s infinite;
+  }
 }
 
 @keyframes rentkit-skeleton-shimmer {

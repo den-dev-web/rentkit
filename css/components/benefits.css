@@ -32,9 +32,11 @@
     box-shadow var(--transition-normal);
 }
 
-.benefits__item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-soft);
+@media (hover: hover) {
+  .benefits__item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
 }
 
 .benefits__icon {
