@@ -66,12 +66,12 @@ A rental catalog for apartments, houses and studios, built with plain HTML, CSS 
 - One JS module per responsibility, initialised from two entry points (`js/main.js` and `js/property.js`).
 - Data lives in a local module instead of an API. Its texts are stored as `{ en, uk, ru }` and localised once, when the module loads.
 
-Lighthouse (local run, mobile simulation):
+Lighthouse on the live demo (mobile, October 2026):
 
-| Page | Performance | Accessibility | Best practices | SEO |
-| --- | --- | --- | --- | --- |
-| Home | 99 | 100 | 100 | 100 |
-| Property | 87 | 100 | 100 | 100 |
+| Page | Performance | Accessibility | Best practices | SEO | LCP |
+| --- | --- | --- | --- | --- | --- |
+| Home | 97 | 100 | 100 | 100 | 1.2 s |
+| Property | 97 | 100 | 100 | 100 | 2.6 s |
 
 ---
 

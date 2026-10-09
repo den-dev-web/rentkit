@@ -4,7 +4,7 @@ Ideas deferred during the portfolio audit (October 2026). None of them blocks th
 
 ## Performance
 
-- **Load only the active language.** `js/modules/i18n.js` imports all three dictionaries, and `js/data/properties.js` holds every text in en/uk/ru. Loading just the current language (dynamic `import()` of one dictionary, per-language data files) would shrink the critical path on `property.html`, where LCP is 3.9 s in Lighthouse (mobile simulation).
+- **Load only the active language.** `js/modules/i18n.js` imports all three dictionaries, and `js/data/properties.js` holds every text in en/uk/ru. Loading just the current language (dynamic `import()` of one dictionary, per-language data files) would shrink the critical path on `property.html`, the heaviest page.
 - **Discover the property LCP image earlier.** The first gallery photo is injected by JS, so the browser finds it late. Static per-property pages (or a build step) would let the image be in the HTML.
 
 ## SEO
