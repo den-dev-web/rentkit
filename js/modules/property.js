@@ -1,5 +1,5 @@
 import { RENTKIT_PROPERTIES } from "../data/properties.js";
-import { t, tPlural, formatNumber, locale } from "./i18n.js";
+import { t, tPlural, formatNumber, locale, localizeData } from "./i18n.js";
 
 function getPropertyData() {
   const dataSource = RENTKIT_PROPERTIES || [];
@@ -8,8 +8,10 @@ function getPropertyData() {
   const params = new URLSearchParams(window.location.search);
   const requestedId = params.get("id");
   // Без id показываем первый объект как демо; неизвестный id — «не найдено»
-  if (!requestedId) return dataSource[0];
-  return dataSource.find((item) => item.id === requestedId) || null;
+  const item = requestedId
+    ? dataSource.find((property) => property.id === requestedId)
+    : dataSource[0];
+  return item ? localizeData(item) : null;
 }
 
 function showNotFound() {
@@ -110,7 +112,7 @@ function hydratePropertyPage(propertyData) {
 
   const metaEl = document.querySelector("[data-property-meta]");
   if (metaEl) {
-    const place = [propertyData.city, propertyData.locationNote]
+    const place = [t(`city.${propertyData.city}`), propertyData.locationNote]
       .filter(Boolean)
       .join(", ");
     const address = propertyData.address ? ` — ${propertyData.address}` : "";

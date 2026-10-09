@@ -55,10 +55,20 @@ export function tPlural(key, count) {
   return (forms[form] ?? forms.other).replace("{count}", formatNumber(count));
 }
 
-// Поля данных бывают строкой или объектом { en, uk, ru }
-export function localize(value) {
-  if (value && typeof value === "object" && !Array.isArray(value)) {
-    return value[lang] ?? value[DEFAULT_LANG];
+const isLocalizedText = (value) =>
+  value !== null &&
+  typeof value === "object" &&
+  !Array.isArray(value) &&
+  typeof value[DEFAULT_LANG] === "string";
+
+// Рекурсивно заменяет поля { en, uk, ru } на строку текущего языка
+export function localizeData(value) {
+  if (isLocalizedText(value)) return value[lang] ?? value[DEFAULT_LANG];
+  if (Array.isArray(value)) return value.map(localizeData);
+  if (value !== null && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [key, localizeData(item)]),
+    );
   }
   return value;
 }

@@ -1,6 +1,8 @@
-import { RENTKIT_PROPERTIES } from "../data/properties.js";
+import { RENTKIT_PROPERTIES as RAW_PROPERTIES } from "../data/properties.js";
 import { observeCard } from "./reveal.js";
-import { t, tPlural, formatNumber, localize } from "./i18n.js";
+import { t, tPlural, formatNumber, localizeData } from "./i18n.js";
+
+const RENTKIT_PROPERTIES = localizeData(RAW_PROPERTIES);
 
 export default function initCatalog() {
   const skeletonGrid = document.querySelector("[data-skeleton-grid]");
@@ -435,7 +437,7 @@ export default function initCatalog() {
         <div class="property-card__body">
           <h3 class="property-card__title">${item.title}</h3>
 
-          <p class="property-card__location">${item.city}, ${item.address}</p>
+          <p class="property-card__location">${t(`city.${item.city}`)}, ${item.address}</p>
 
           <div class="property-card__info">
             <span>${tPlural("card.rooms", item.rooms)}</span>
@@ -487,7 +489,7 @@ export default function initCatalog() {
       filters;
 
     let filtered = RENTKIT_PROPERTIES.filter((item) => {
-      if (city && item.city.toLowerCase() !== city.toLowerCase()) return false;
+      if (city && item.city !== city) return false;
       if (priceMin !== null && priceMax !== null) {
         if (!(item.price > priceMin && item.price <= priceMax)) return false;
       } else if (priceMin !== null) {
@@ -805,7 +807,7 @@ export default function initCatalog() {
 
     const chips = [];
 
-    if (data.city) chips.push({ key: "city", label: data.city });
+    if (data.city) chips.push({ key: "city", label: t(`city.${data.city}`) });
     if (data.priceMin !== null || data.priceMax !== null) {
       let label = t("filter.price");
       if (data.priceMax !== null) {
